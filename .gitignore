@@ -4,3 +4,4 @@ develop-eggs
 bin
 parts
 .svn
+.installed.cfg
