@@ -1,9 +1,6 @@
 [submodule "src/collective.blog.feeds"]
 	path = src/collective.blog.feeds
 	url = https://github.com/Rudd-O/collective.blog.feeds
-[submodule "src/collective.flowplayer"]
-	path = src/collective.flowplayer
-	url = https://github.com/Rudd-O/collective.flowplayer
 [submodule "src/contentratings"]
 	path = src/contentratings
 	url = https://github.com/collective/contentratings
