@@ -7,9 +7,6 @@
 [submodule "src/contentratings"]
 	path = src/contentratings
 	url = https://github.com/collective/contentratings
-[submodule "src/plone.app.widgets"]
-	path = src/plone.app.widgets
-	url = https://github.com/plone/plone.app.widgets.git
 [submodule "src/Products.CMFPlone"]
 	path = src/Products.CMFPlone
 	url = https://github.com/Rudd-O/Products.CMFPlone.git
