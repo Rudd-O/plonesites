@@ -7,6 +7,7 @@
 
   <include package="Products.PloneKeywordManager"/>
   <include package="plone.app.caching"/>
+  <include package="collective.ckeditor"/>
 
   <genericsetup:registerProfile
       name="default"
