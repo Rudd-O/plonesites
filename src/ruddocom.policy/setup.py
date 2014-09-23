@@ -27,6 +27,7 @@ setup(name='ruddocom.policy',
           'setuptools',
           'Plone',
           'Products.PloneKeywordManager',
+          'plone.app.caching',
       ],
       # -*- Extra requirements: -*-
       extras_require={

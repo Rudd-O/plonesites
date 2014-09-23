@@ -25,3 +25,8 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('PloneKeywordManager'))
+
+    def test_ploneappcaching_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('plone.app.caching'))

@@ -6,6 +6,7 @@
     i18n_domain="ruddocom.policy">
 
   <include package="Products.PloneKeywordManager"/>
+  <include package="plone.app.caching"/>
 
   <genericsetup:registerProfile
       name="default"
