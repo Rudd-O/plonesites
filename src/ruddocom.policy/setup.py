@@ -29,6 +29,7 @@ setup(name='ruddocom.policy',
           'Products.PloneKeywordManager',
           'plone.app.caching',
           'collective.ckeditor',
+          'collective.plonefinder',
       ],
       # -*- Extra requirements: -*-
       extras_require={
