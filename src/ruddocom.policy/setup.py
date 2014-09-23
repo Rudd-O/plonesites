@@ -32,6 +32,7 @@ setup(name='ruddocom.policy',
           'collective.plonefinder',
           'Products.LinguaPlone',
           'plone.app.theming',
+          'Products.RedirectionTool',
       ],
       # -*- Extra requirements: -*-
       extras_require={

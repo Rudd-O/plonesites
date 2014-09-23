@@ -50,3 +50,8 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('plone.app.theming'))
+
+    def test_redirectiontool_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('RedirectionTool'))

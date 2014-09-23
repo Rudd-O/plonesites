@@ -8,5 +8,6 @@
     <dependency>profile-collective.plonefinder:default</dependency>
     <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
+    <dependency>profile-Products.RedirectionTool:default</dependency>
   </dependencies>
 </metadata>
