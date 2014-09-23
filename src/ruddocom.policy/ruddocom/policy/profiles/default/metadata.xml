@@ -7,5 +7,6 @@
     <dependency>profile-collective.ckeditor:default</dependency>
     <dependency>profile-collective.plonefinder:default</dependency>
     <dependency>profile-Products.LinguaPlone:LinguaPlone</dependency>
+    <dependency>profile-plone.app.theming:default</dependency>
   </dependencies>
 </metadata>

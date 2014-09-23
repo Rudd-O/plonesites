@@ -45,3 +45,8 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('LinguaPlone'))
+
+    def test_diazo_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('plone.app.theming'))
