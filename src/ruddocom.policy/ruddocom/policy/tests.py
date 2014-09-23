@@ -12,6 +12,7 @@ class TestSetup(unittest.TestCase):
                          "Rudd-O.com",
                          portal.getProperty('title')
                          )
+
     def test_portal_description(self):
         portal = self.layer['portal']
         self.assertEqual(
@@ -19,3 +20,8 @@ class TestSetup(unittest.TestCase):
                          "discussion.  Established 1999.",
                          portal.getProperty('description')
         )
+
+    def test_PloneKeywordManager_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('PloneKeywordManager'))

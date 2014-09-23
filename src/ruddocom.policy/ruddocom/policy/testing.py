@@ -1,5 +1,6 @@
 from plone.app.testing import PloneSandboxLayer, applyProfile, PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting
+from plone.testing import z2
 
 from zope.configuration import xmlconfig
 

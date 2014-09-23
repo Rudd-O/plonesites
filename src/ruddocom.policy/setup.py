@@ -26,6 +26,7 @@ setup(name='ruddocom.policy',
       install_requires=[
           'setuptools',
           'Plone',
+          'Products.PloneKeywordManager',
       ],
       # -*- Extra requirements: -*-
       extras_require={
