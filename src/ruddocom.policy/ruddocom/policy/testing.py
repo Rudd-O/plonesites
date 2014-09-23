@@ -1,0 +1,23 @@
+from plone.app.testing import PloneSandboxLayer, applyProfile, PLONE_FIXTURE
+from plone.app.testing import IntegrationTesting
+
+from zope.configuration import xmlconfig
+
+class RuddocomPolicy(PloneSandboxLayer):
+    defaultBases = (PLONE_FIXTURE,)
+    def setUpZope(self, app, configurationContext):
+        # Load ZCML
+        import ruddocom.policy
+        xmlconfig.file('configure.zcml',
+                        ruddocom.policy,
+                        context=configurationContext
+                        )
+
+    def setUpPloneSite(self, portal):
+        applyProfile(portal, 'ruddocom.policy:default')
+
+RUDDOCOM_POLICY_FIXTURE = RuddocomPolicy()
+RUDDOCOM_POLICY_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(RUDDOCOM_POLICY_FIXTURE,),
+    name="Rudd-O.com:Integration"
+)

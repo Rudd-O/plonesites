@@ -1,55 +1,21 @@
-import unittest
-
-#from zope.testing import doctestunit
-#from zope.component import testing
-from Testing import ZopeTestCase as ztc
-
-from Products.Five import fiveconfigure
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import PloneSite
-ptc.setupPloneSite()
-
-import ruddocom.policy
+import unittest2 as unittest
+from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
 
 
-class TestCase(ptc.PloneTestCase):
+class TestSetup(unittest.TestCase):
 
-    class layer(PloneSite):
+    layer = RUDDOCOM_POLICY_INTEGRATION_TESTING
 
-        @classmethod
-        def setUp(cls):
-            fiveconfigure.debug_mode = True
-            ztc.installPackage(ruddocom.policy)
-            fiveconfigure.debug_mode = False
-
-        @classmethod
-        def tearDown(cls):
-            pass
-
-
-def test_suite():
-    return unittest.TestSuite([
-
-        # Unit tests
-        #doctestunit.DocFileSuite(
-        #    'README.txt', package='ruddocom.policy',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-        #doctestunit.DocTestSuite(
-        #    module='ruddocom.policy.mymodule',
-        #    setUp=testing.setUp, tearDown=testing.tearDown),
-
-
-        # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='ruddocom.policy',
-        #    test_class=TestCase),
-
-        #ztc.FunctionalDocFileSuite(
-        #    'browser.txt', package='ruddocom.policy',
-        #    test_class=TestCase),
-
-        ])
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+    def test_portal_title(self):
+        portal = self.layer['portal']
+        self.assertEqual(
+                         "Rudd-O.com",
+                         portal.getProperty('title')
+                         )
+    def test_portal_description(self):
+        portal = self.layer['portal']
+        self.assertEqual(
+                         "Linux, free software, voluntaryism and cypherpunk "
+                         "material.  Established 1999.",
+                         portal.getProperty('description')
+        )

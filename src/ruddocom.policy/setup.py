@@ -26,8 +26,8 @@ setup(name='ruddocom.policy',
       install_requires=[
           'setuptools',
           'Plone',
-          # -*- Extra requirements: -*-
       ],
+      # -*- Extra requirements: -*-
       extras_require={
           'test': ['plone.app.testing']
       },
