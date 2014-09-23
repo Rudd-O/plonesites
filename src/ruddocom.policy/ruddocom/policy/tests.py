@@ -16,6 +16,6 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         self.assertEqual(
                          "Linux, free software, voluntaryism and cypherpunk "
-                         "material.  Established 1999.",
+                         "discussion.  Established 1999.",
                          portal.getProperty('description')
         )
