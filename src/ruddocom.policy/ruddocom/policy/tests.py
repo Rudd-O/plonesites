@@ -40,3 +40,8 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('collective.plonefinder'))
+
+    def test_linguaplone_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('LinguaPlone'))
