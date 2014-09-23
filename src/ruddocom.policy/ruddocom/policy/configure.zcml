@@ -7,9 +7,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="ruddocom.policy"
+      title="Rudd-O.com site policy"
       directory="profiles/default"
-      description="Installs the ruddocom.policy package"
+      description="Turn a site into Rudd-O.com"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <!-- -*- extra stuff goes here -*- -->
