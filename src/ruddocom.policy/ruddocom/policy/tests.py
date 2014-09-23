@@ -55,3 +55,16 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('RedirectionTool'))
+
+    def test_linguaplone_settings_correct(self):
+        portal = self.layer['portal']
+        l = portal['portal_languages']
+        self.assertEquals(l.supported_langs, ['en', 'es'])
+        self.assertEquals(l.use_cctld_negotiation, False)
+        self.assertEquals(l.use_combined_language_codes, False)
+        self.assertEquals(l.use_content_negotiation, True)
+        self.assertEquals(l.use_cookie_negotiation, False)
+        self.assertEquals(l.use_path_negotiation, False)
+        self.assertEquals(l.use_request_negotiation, False)
+        self.assertEquals(l.use_subdomain_negotiation, True)
+        self.assertEquals(l.force_language_urls, True)

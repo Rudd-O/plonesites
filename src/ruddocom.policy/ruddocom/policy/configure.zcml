@@ -7,6 +7,14 @@
 
   <includeDependencies package="."/>
 
+  <genericsetup:importStep
+      name="ruddocom-language"
+      title="Rudd-O.com site profile language setup"
+      description="Apply custom language settings for Rudd-O.com"
+      handler="ruddocom.policy.setupHandlers.importLanguage">
+      <depends name="languagetool" />
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"
@@ -14,6 +22,5 @@
       description="Turn a site into Rudd-O.com"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  <!-- -*- extra stuff goes here -*- -->
   
 </configure>
