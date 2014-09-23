@@ -5,10 +5,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="ruddocom.policy">
 
-  <include package="Products.PloneKeywordManager"/>
-  <include package="plone.app.caching"/>
-  <include package="collective.ckeditor"/>
-  <include package="collective.plonefinder"/>
+  <includeDependencies package="."/>
 
   <genericsetup:registerProfile
       name="default"
