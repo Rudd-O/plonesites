@@ -1,0 +1,12 @@
+README.html
+adminPassword.txt
+*.pyc
+var
+develop-eggs
+bin
+parts
+.svn
+.installed.cfg
+*.egg
+*egg-info
+
