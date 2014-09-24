@@ -113,3 +113,10 @@ class TestSetup(unittest.TestCase):
         l = site['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
         self.assertEquals(l.getLanguage(), 'es')
+
+    def test_content_appears(self):
+        site = self.layer['portal']
+        l = site['portal_skins']
+        self.assertIn('ruddocom', l)
+        s = l['ruddocom']
+        self.assertIn('facebook-favicon.png', s)
