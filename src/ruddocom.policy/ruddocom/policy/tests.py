@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import unittest2 as unittest
 from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
 
@@ -100,3 +102,10 @@ class TestSetup(unittest.TestCase):
         for p in permit:
             self.assertIn(p, tconfig['valid_tags'])
             self.assertNotIn(p, tconfig['nasty_tags'])
+
+    def test_portal_structure(self):
+        portal = self.layer['portal']
+        l = portal['english']
+        self.assertEquals(l.title, u'Rudd-O.com in English')
+        l = portal['espanol']
+        self.assertEquals(l.title, u'Rudd-O.com en español')
