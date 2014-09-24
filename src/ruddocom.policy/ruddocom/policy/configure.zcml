@@ -23,6 +23,16 @@
       <depends name="languagetool" />
   </genericsetup:importStep>
 
+  <genericsetup:importStep
+      name="ruddocom-languagecontent"
+      title="Rudd-O.com site profile language for content"
+      description="Apply custom language settings for Rudd-O.com content"
+      handler="ruddocom.policy.setupHandlers.applyLanguageToContent">
+      <depends name="languagetool" />
+      <depends
+       name="Products.CMFCore.exportimport.content.importSiteStructure" />
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"

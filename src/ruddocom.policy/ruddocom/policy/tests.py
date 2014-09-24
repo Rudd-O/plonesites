@@ -104,8 +104,12 @@ class TestSetup(unittest.TestCase):
             self.assertNotIn(p, tconfig['nasty_tags'])
 
     def test_portal_structure(self):
-        portal = self.layer['portal']
-        l = portal['english']
+        site = self.layer['portal']
+        l = site['english']
         self.assertEquals(l.title, u'Rudd-O.com in English')
-        l = portal['espanol']
+        self.assertEquals(l.getDefaultPage(), 'everything')
+        self.assertEquals(l.getLanguage(), 'en')
+        l = site['espanol']
         self.assertEquals(l.title, u'Rudd-O.com en español')
+        self.assertEquals(l.getLanguage(), 'es')
+        self.assertEquals(l.getDefaultPage(), 'everything')

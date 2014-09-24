@@ -37,3 +37,12 @@ def setupPortalTransforms(context):
     make_config_persistent(tconfig)
     trans._p_changed = True
     trans.reload()
+
+
+@only_when_I_run
+def applyLanguageToContent(context):
+    l = context.getSite()
+    l['english'].setLanguage('en')
+    l['english'].setDefaultPage('everything')
+    l['espanol'].setLanguage('es')
+    l['espanol'].setDefaultPage('everything')
