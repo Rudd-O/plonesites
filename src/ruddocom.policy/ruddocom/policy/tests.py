@@ -90,3 +90,13 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.default_contenttype, 'text/html')
         self.assertEquals(l.enable_sitemap, False)
+
+    def test_safe_html(self):
+        portal = self.layer['portal']
+        l = portal['portal_transforms']['safe_html']
+
+        permit = ["embed", "object", "style", "iframe"]
+        tconfig = l._config
+        for p in permit:
+            self.assertIn(p, tconfig['valid_tags'])
+            self.assertNotIn(p, tconfig['nasty_tags'])

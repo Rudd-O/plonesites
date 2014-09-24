@@ -15,6 +15,14 @@
       <depends name="languagetool" />
   </genericsetup:importStep>
 
+  <genericsetup:importStep
+      name="ruddocom-portaltransforms"
+      title="Rudd-O.com site profile portal transforms setup"
+      description="Apply custom language settings for Rudd-O.com"
+      handler="ruddocom.policy.setupHandlers.setupPortalTransforms">
+      <depends name="languagetool" />
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"
