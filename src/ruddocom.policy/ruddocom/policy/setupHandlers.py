@@ -1,15 +1,8 @@
 def importLanguage(context):
+
+    if context.readDataFile('ruddocom.policy.txt') is None:
+        # Not your add-on
+        return
+
     l = context.getSite()['portal_languages']
-    l.manage_setLanguageSettings(
-        defaultLanguage='en',
-        supportedLanguages=['en', 'es'],
-        setContentN=True,
-        setCookieN=False,
-        setCookieEverywhere=False,
-        setRequestN=False,
-        setPathN=False,
-        setUseCombinedLanguageCodes=False,
-        setCcTLDN=False,
-        setSubdomainN=True,
-        setForcelanguageUrls=True,
-    )
+    l.force_language_urls = True
