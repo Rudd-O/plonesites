@@ -92,7 +92,7 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.default_contenttype, 'text/html')
         self.assertEquals(l.enable_sitemap, True)
-        self.assertIn("&lt;script type=&quot;text/javascript&quot;&gt;",
+        self.assertIn("<script type=\"text/javascript\">",
                       l.webstats_js)
 
     def test_safe_html(self):
@@ -107,11 +107,9 @@ class TestSetup(unittest.TestCase):
 
     def test_portal_structure(self):
         site = self.layer['portal']
-        l = site['english']
+        l = site['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
-        self.assertEquals(l.getDefaultPage(), 'everything')
         self.assertEquals(l.getLanguage(), 'en')
-        l = site['espanol']
+        l = site['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
         self.assertEquals(l.getLanguage(), 'es')
-        self.assertEquals(l.getDefaultPage(), 'everything')

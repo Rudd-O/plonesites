@@ -42,7 +42,5 @@ def setupPortalTransforms(context):
 @only_when_I_run
 def applyLanguageToContent(context):
     l = context.getSite()
-    l['english'].setLanguage('en')
-    l['english'].setDefaultPage('everything')
-    l['espanol'].setLanguage('es')
-    l['espanol'].setDefaultPage('everything')
+    l['en'].setLanguage('en')
+    l['es'].setLanguage('es')
