@@ -114,7 +114,7 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.title, u'Rudd-O.com en español')
         self.assertEquals(l.getLanguage(), 'es')
 
-    def test_content_appears(self):
+    def test_skin_content_appears(self):
         site = self.layer['portal']
         l = site['portal_skins']
         self.assertIn('ruddocom', l)

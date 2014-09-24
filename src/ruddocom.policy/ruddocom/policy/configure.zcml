@@ -30,8 +30,6 @@
       description="Create and apply settings for Rudd-O.com content"
       handler="ruddocom.policy.setupHandlers.createContent">
       <depends name="languagetool" />
-      <depends
-       name="Products.CMFCore.exportimport.content.importSiteStructure" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
