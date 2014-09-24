@@ -79,3 +79,14 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.use_request_negotiation, False)
         self.assertEquals(l.use_subdomain_negotiation, True)
         self.assertEquals(l.force_language_urls, True)
+
+    def test_portal_properties(self):
+        portal = self.layer['portal']
+        l = portal['portal_properties']['site_properties']
+        self.assertEquals(l.default_language, 'en')
+        self.assertEquals(l.default_charset, 'utf-8')
+        self.assertEquals(l.default_editor, 'CKeditor')
+        self.assertEquals(l.visible_ids, True)
+        self.assertEquals(l.exposeDCMetaTags, True)
+        self.assertEquals(l.default_contenttype, 'text/html')
+        self.assertEquals(l.enable_sitemap, False)
