@@ -91,7 +91,9 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.visible_ids, True)
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.default_contenttype, 'text/html')
-        self.assertEquals(l.enable_sitemap, False)
+        self.assertEquals(l.enable_sitemap, True)
+        self.assertIn("&lt;script type=&quot;text/javascript&quot;&gt;",
+                      l.webstats_js)
 
     def test_safe_html(self):
         portal = self.layer['portal']
