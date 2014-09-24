@@ -21,6 +21,17 @@ class TestSetup(unittest.TestCase):
                          portal.getProperty('description')
         )
 
+    def test_portal_email(self):
+        portal = self.layer['portal']
+        self.assertEqual(
+                         "webmaster@rudd-o.com",
+                         portal.getProperty('email_from_address')
+        )
+        self.assertEqual(
+                         "Webmaster at Rudd-O.com",
+                         portal.getProperty('email_from_name')
+        )
+
     def test_PloneKeywordManager_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
