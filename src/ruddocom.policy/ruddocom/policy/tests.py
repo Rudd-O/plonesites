@@ -92,6 +92,7 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.default_contenttype, 'text/html')
         self.assertEquals(l.enable_sitemap, True)
+        self.assertNotIn("text/x-web-markdown", l.forbidden_contenttypes)
         self.assertIn("<script type=\"text/javascript\">",
                       l.webstats_js)
 

@@ -40,6 +40,8 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <include file="upgrades.zcml" />
+
   <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
 
 </configure>

@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ruddocom.policy">
+       
+    <gs:upgradeStep
+        title="Upgrade to version 2"
+        description="Add Markdown support"
+        source="1"
+        destination="2"
+        handler=".upgrades.upgrade_1_to_2"
+        profile="ruddocom.policy:default" />
+       
+</configure>

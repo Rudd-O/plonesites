@@ -10,5 +10,15 @@
   <property name="default_contenttype" type="string">text/html</property>
   <property name="enable_sitemap" type="boolean">True</property>
   <property name="webstats_js" type="text">&lt;script type=&quot;text/javascript&quot;&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();&lt;/script&gt;</property>
+  <property name="forbidden_contenttypes" type="lines">
+   <element value="text/structured"/>
+   <element value="text/restructured"/>
+   <element value="text/x-rst"/>
+   <element value="text/plain"/>
+   <element value="text/plain-pre"/>
+   <element value="text/x-python"/>
+   <element value="text/x-web-intelligent"/>
+   <element value="text/x-html-captioned"/>
+  </property>
  </object>
 </object>
