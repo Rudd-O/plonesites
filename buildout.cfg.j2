@@ -64,9 +64,9 @@ find-links +=
 # ZEO Server
 zeo-address = /srv/plone/{{ deployment }}/var/zeosocket
 # Zope client 1
-http-address = 0.0.0.0:8080
+http-address = 0.0.0.0:{{ zserver_port }}
 # Additional clients:
-debugger-address = 127.0.0.1:8180
+debugger-address = 127.0.0.1:{{ debugger_port }}
 
 # Deployment place
 deployment-dir = /srv/plone/{{ deployment }}
