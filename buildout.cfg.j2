@@ -62,14 +62,14 @@ find-links +=
 # Specify the ports on which your Zope installation
 # will listen.
 # ZEO Server
-zeo-address = 127.0.0.1:8100
+zeo-address = /srv/plone/{{ deployment }}/var/zeosocket
 # Zope client 1
-http-address = 0.0.0.0:8080
+http-address = {{ zserver_address }}
 # Additional clients:
-debugger-address = 127.0.0.1:8180
+debugger-address = 127.0.0.1:{{ debugger_port }}
 
 # Deployment place
-deployment-dir = /srv/plone/master
+deployment-dir = /srv/plone/{{ deployment }}
 # temporarily disabling the
 # site-id = Rudd-O.com
 

@@ -4,6 +4,7 @@ adminPassword.txt
 develop-eggs
 bin
 parts
+buildout.cfg
 .svn
 .installed.cfg
 .settings
