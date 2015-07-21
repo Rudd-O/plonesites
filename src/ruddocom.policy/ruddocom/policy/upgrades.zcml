@@ -16,7 +16,7 @@
         description="Add login cookie validity of one week"
         source="2"
         destination="3"
-        handler=".setupHandlers.setCookieProperties"
+        handler=".upgrades.upgrade_2_to_3"
         profile="ruddocom.policy:default" />
        
 </configure>
