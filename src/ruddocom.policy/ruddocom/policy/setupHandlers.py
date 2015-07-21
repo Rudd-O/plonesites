@@ -54,3 +54,10 @@ def createContent(context):
     l['es'].setDescription(u"Linux, software libre, voluntarismo y cypherpunk.  Desde 1999.")
     l['en'].setLanguage('en')
     l['es'].setLanguage('es')
+
+@only_when_I_run
+def setupCookies(context):
+    l = context.getSite().acl_users.session
+    l.timeout = 604800
+    l.cookie_lifetime = 7
+    l.secure = True

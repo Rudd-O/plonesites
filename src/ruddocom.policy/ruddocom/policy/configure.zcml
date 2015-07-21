@@ -32,6 +32,14 @@
       <depends name="languagetool" />
   </genericsetup:importStep>
 
+  <genericsetup:importStep
+      name="ruddocom-cookiesettings"
+      title="Rudd-O.com site cookie settings setup"
+      description="Set login cookie validity of one week"
+      handler="ruddocom.policy.setupHandlers.setupCookies">
+      <depends name="languagetool" />
+  </genericsetup:importStep>
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"

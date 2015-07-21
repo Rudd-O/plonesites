@@ -11,4 +11,12 @@
         handler=".upgrades.upgrade_1_to_2"
         profile="ruddocom.policy:default" />
        
+    <gs:upgradeStep
+        title="Upgrade to version 3"
+        description="Add login cookie validity of one week"
+        source="2"
+        destination="3"
+        handler=".upgrades.upgrade_2_to_3"
+        profile="ruddocom.policy:default" />
+       
 </configure>
