@@ -121,3 +121,10 @@ class TestSetup(unittest.TestCase):
         self.assertIn('ruddocom', l)
         s = l['ruddocom']
         self.assertIn('facebook-favicon.png', s)
+
+    def test_cookies(self):
+        portal = self.layer['portal']
+        l = portal['acl_users']['session']
+        self.assertEquals(l.timeout, 604800)
+        self.assertEquals(l.cookie_lifetime, 7)
+        self.assertEquals(l.secure, True)
