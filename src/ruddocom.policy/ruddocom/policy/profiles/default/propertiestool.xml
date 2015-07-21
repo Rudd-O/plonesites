@@ -22,11 +22,3 @@
   </property>
  </object>
 </object>
-<object name="acl_user" meta_type="Pluggable Auth Service"
-        purge="False">
- <object name="session" meta_type="Plone Session Plugin" purge="False">
-  <property name="timeout" type="int">604800</property>
-  <property name="cookie_lifetime" type="int">7</property>
-  <property name="secure" type="boolean">True</property>
- </object>
-</object>
