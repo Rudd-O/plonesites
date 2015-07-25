@@ -7,3 +7,6 @@ def upgrade_1_to_2(context):
 
 def upgrade_2_to_3(context):
     context.runImportStepFromProfile(default_profile, 'ruddocom-cookiesettings')
+
+def upgrade_3_to_4(context):
+    context.runImportStepFromProfile(default_profile, 'cssregistry')

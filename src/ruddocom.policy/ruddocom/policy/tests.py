@@ -128,3 +128,12 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.timeout, 604800)
         self.assertEquals(l.cookie_lifetime, 7)
         self.assertEquals(l.secure, True)
+
+    def test_css(self):
+        portal = self.layer['portal']
+        skins = portal['portal_skins']
+        ruddocom = skins["ruddocom"]
+        assert "cssoverrides.css" in ruddocom.keys()
+        css = portal['portal_css']
+        resources = css.resources
+        assert "cssoverrides.css" in [ r.getId() for r in resources ]
