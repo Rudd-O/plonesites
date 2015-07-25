@@ -30,7 +30,7 @@
         cookable="True"
         enabled="1"
         expression=""
-        media=""
+        media="screen"
         rendering="link"
         insert-after="public.css" />
 
