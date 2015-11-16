@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest2 as unittest
+from plone.app.multilingual.interfaces import ILanguage
 from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
 
 
@@ -54,10 +55,16 @@ class TestSetup(unittest.TestCase):
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('collective.plonefinder'))
 
-    def test_linguaplone_installed(self):
+    def test_linguaplone_not_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('LinguaPlone'))
+        self.assertFalse(qi.isProductInstalled('LinguaPlone'))
+
+    def test_multilingual_installed(self):
+        portal = self.layer['portal']
+        qi = getattr(portal, 'portal_quickinstaller')
+        self.assertTrue(qi.isProductInstalled('plone.app.multilingual'))
+        self.assertTrue(qi.isProductInstalled('archetypes.multilingual'))
 
     def test_diazo_installed(self):
         portal = self.layer['portal']
@@ -80,7 +87,6 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.use_path_negotiation, False)
         self.assertEquals(l.use_request_negotiation, False)
         self.assertEquals(l.use_subdomain_negotiation, True)
-        self.assertEquals(l.force_language_urls, True)
 
     def test_portal_properties(self):
         portal = self.layer['portal']
@@ -110,10 +116,10 @@ class TestSetup(unittest.TestCase):
         site = self.layer['portal']
         l = site['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
-        self.assertEquals(l.getLanguage(), 'en')
+        self.assertEquals(ILanguage(l).get_language(), 'en')
         l = site['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
-        self.assertEquals(l.getLanguage(), 'es')
+        self.assertEquals(ILanguage(l).get_language(), 'es')
 
     def test_skin_content_appears(self):
         site = self.layer['portal']

@@ -13,3 +13,8 @@ def upgrade_3_to_4(context):
 
 def upgrade_4_to_5(context):
     context.runImportStepFromProfile(default_profile, 'cssregistry')
+
+def upgrade_5_to_6(context):
+    css = getToolByName(context, 'portal_css')
+    css.cookResources()
+    context.runImportStepFromProfile(default_profile, 'ruddocom-multilingual')
