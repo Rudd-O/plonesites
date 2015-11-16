@@ -19,7 +19,7 @@
   <genericsetup:importStep
       name="ruddocom-portaltransforms"
       title="Rudd-O.com site profile portal transforms setup"
-      description="Apply custom language settings for Rudd-O.com"
+      description="Apply custom portal transforms to  Rudd-O.com"
       handler="ruddocom.policy.setupHandlers.setupPortalTransforms">
       <depends name="languagetool" />
   </genericsetup:importStep>
