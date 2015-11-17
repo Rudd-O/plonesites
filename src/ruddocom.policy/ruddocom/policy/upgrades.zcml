@@ -35,4 +35,12 @@
         handler=".upgrades.upgrade_4_to_5"
         profile="ruddocom.policy:default" />
        
+    <gs:upgradeStep
+        title="Upgrade to version 6"
+        description="Switch from LinguaPlone to plone.app.multilingual"
+        source="5"
+        destination="6"
+        handler=".upgrades.upgrade_5_to_6"
+        profile="ruddocom.policy:default" />
+       
 </configure>

@@ -30,9 +30,12 @@ setup(name='ruddocom.policy',
           'plone.app.caching',
           'collective.ckeditor',
           'collective.plonefinder',
-          'Products.LinguaPlone',
+          'plone.app.dexterity',
+          'plone.app.multilingual == 2.0.1',
+          'archetypes.multilingual == 2.0.1dev0',
           'plone.app.theming',
           'Products.RedirectionTool',
+          'wildcard.fixpersistentutilities == 1.1b7',
       ],
       # -*- Extra requirements: -*-
       extras_require={

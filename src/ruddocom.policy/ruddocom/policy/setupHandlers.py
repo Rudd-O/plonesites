@@ -2,7 +2,8 @@
 
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
-
+from plone.app.multilingual.browser.setup import SetupMultilingualSite
+from plone.app.multilingual.interfaces import ILanguage
 
 def only_when_I_run(func):
     def importStep(context):
@@ -12,12 +13,6 @@ def only_when_I_run(func):
         return func(context)
     importStep.func_name = func.func_name
     return importStep
-
-
-@only_when_I_run
-def importLanguage(context):
-    l = context.getSite()['portal_languages']
-    l.force_language_urls = True
 
 
 @only_when_I_run
@@ -52,8 +47,8 @@ def createContent(context):
     l['es'].setTitle(u"Rudd-O.com en español")
     l['en'].setDescription(u"Linux, free software, voluntaryism and cypherpunk.  Established 1999.")
     l['es'].setDescription(u"Linux, software libre, voluntarismo y cypherpunk.  Desde 1999.")
-    l['en'].setLanguage('en')
-    l['es'].setLanguage('es')
+    ILanguage(l['en']).set_language('en')
+    ILanguage(l['es']).set_language('es')
 
 @only_when_I_run
 def setupCookies(context):
@@ -61,3 +56,24 @@ def setupCookies(context):
     l.timeout = 604800
     l.cookie_lifetime = 7
     l.secure = True
+
+@only_when_I_run
+def switchToMultilingual(context):
+    qi = getToolByName(context.getSite(), 'portal_quickinstaller')
+    activated = False
+    if not qi.isProductInstalled('plone.app.multilingual'):
+        qi.installProduct('plone.app.multilingual')
+        activated = True
+    if not qi.isProductInstalled('archetypes.multilingual'):
+        qi.installProduct('archetypes.multilingual')
+        activated = True
+    if qi.isProductInstalled('LinguaPlone'):
+        qi.uninstallProducts(['LinguaPlone'])
+    pl = getToolByName(context.getSite(), 'portal_languages')
+    pl.default_language = "en"
+    pl.supported_langs = ['en', 'es']
+    pl.use_cookie_negotiation = False
+    pl.use_subdomain_negotiation = True
+    if activated:
+        s = SetupMultilingualSite(context=context.getSite())
+        s.setupSite(context.getSite())
