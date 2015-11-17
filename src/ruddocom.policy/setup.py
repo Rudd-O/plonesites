@@ -35,6 +35,7 @@ setup(name='ruddocom.policy',
           'archetypes.multilingual == 2.0.1dev0',
           'plone.app.theming',
           'Products.RedirectionTool',
+          'wildcard.fixpersistentutilities == 1.1b7',
       ],
       # -*- Extra requirements: -*-
       extras_require={
