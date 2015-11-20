@@ -143,3 +143,9 @@ class TestSetup(unittest.TestCase):
         css = portal['portal_css']
         resources = css.resources
         assert "cssoverrides.css" in [ r.getId() for r in resources ]
+
+    def test_ckeditor(self):
+        portal = self.layer['portal']
+        props = portal['portal_properties']
+        ckeditor = props["ckeditor_properties"]
+        assert "disabled" == ckeditor.filtering

@@ -21,4 +21,7 @@
    <element value="text/x-html-captioned"/>
   </property>
  </object>
+ <object name="ckeditor_properties" meta_type="Plone Property Sheet" purge="False">
+  <property name="filtering" type="string">disabled</property>
+ </object>
 </object>

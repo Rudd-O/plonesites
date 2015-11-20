@@ -43,4 +43,12 @@
         handler=".upgrades.upgrade_5_to_6"
         profile="ruddocom.policy:default" />
        
+    <gs:upgradeStep
+        title="Upgrade to version 7"
+        description="Nuke filtering in CKEditor"
+        source="6"
+        destination="7"
+        handler=".upgrades.upgrade_6_to_7"
+        profile="ruddocom.policy:default" />
+       
 </configure>

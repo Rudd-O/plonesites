@@ -46,6 +46,9 @@ setup(name='ruddocom.policy',
 
       [z3c.autoinclude.plugin]
       target = plone
+
+      [plone.recipe.zope2instance.ctl]
+      upgrade = ruddocom.policy.upgrader:main
       """,
 #      setup_requires=["PasteScript"],
 #      paster_plugins=["ZopeSkel"],
