@@ -18,3 +18,6 @@ def upgrade_5_to_6(context):
     css = getToolByName(context, 'portal_css')
     css.cookResources()
     context.runImportStepFromProfile(default_profile, 'ruddocom-multilingual')
+
+def upgrade_6_to_7(context):
+    context.runImportStepFromProfile(default_profile, 'propertiestool')
