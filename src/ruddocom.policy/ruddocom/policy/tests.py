@@ -127,6 +127,7 @@ class TestSetup(unittest.TestCase):
         self.assertIn('ruddocom', l)
         s = l['ruddocom']
         self.assertIn('facebook-favicon.png', s)
+        self.assertIn('github-favicon.ico', s)
 
     def test_cookies(self):
         portal = self.layer['portal']
