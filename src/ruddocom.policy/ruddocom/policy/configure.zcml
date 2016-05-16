@@ -16,6 +16,8 @@
           <depends name="typeinfo" />
           <depends name="registry" />
           <depends name="content" />
+          <depends name="profile-Products.ATContentTypes:default" />
+          <depends name="profile-archetypes.multilingual:default" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
