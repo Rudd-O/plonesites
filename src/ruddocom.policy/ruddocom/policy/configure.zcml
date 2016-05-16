@@ -9,22 +9,6 @@
   <includeDependencies package="."/>
 
   <genericsetup:importStep
-      name="ruddocom-multilingual"
-      title="Rudd-O.com multilingual setup"
-      description="Enable plone.app.multilingual"
-      handler="ruddocom.policy.setupHandlers.switchToMultilingual">
-      <depends name="languagetool" />
-  </genericsetup:importStep>
-
-  <genericsetup:importStep
-      name="ruddocom-portaltransforms"
-      title="Rudd-O.com site profile portal transforms setup"
-      description="Apply custom portal transforms to  Rudd-O.com"
-      handler="ruddocom.policy.setupHandlers.setupPortalTransforms">
-      <depends name="languagetool" />
-  </genericsetup:importStep>
-
-  <genericsetup:importStep
       name="ruddocom-languagecontent"
       title="Rudd-O.com site profile content setup"
       description="Create and apply settings for Rudd-O.com content"
