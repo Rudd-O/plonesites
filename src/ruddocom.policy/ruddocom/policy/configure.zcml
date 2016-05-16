@@ -6,7 +6,16 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="ruddocom.policy">
 
-  <includeDependencies package="."/>
+  <include package="plone.app.registry" />
+  <include package="plone.app.contenttypes" />
+  <include package="Products.ATContentTypes" />
+  <include package="plone.app.caching" />
+  <include package="plone.app.dexterity" />
+  <include package="plone.app.multilingual" />
+  <include package="plone.app.theming" />
+  <include package="archetypes.multilingual" />
+  <include package="Products.RedirectionTool" />
+  <include package="Products.PloneKeywordManager" />
 
   <genericsetup:importStep
       name="ruddocom.policy_default"
