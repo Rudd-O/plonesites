@@ -3,6 +3,8 @@
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
 from Products.CMFPlone.interfaces import ILanguage
+import logging
+
 
 def only_when_I_run(func):
     def importStep(context):
@@ -13,8 +15,6 @@ def only_when_I_run(func):
     importStep.func_name = func.func_name
     return importStep
 
-
-@only_when_I_run
 def createContent(context):
     logger = logging.getLogger('ruddocom.policy')
     logger.info("Creating content")
@@ -31,7 +31,6 @@ def createContent(context):
     ILanguage(l['es']).set_language('es')
     logger.info("Content created")
 
-@only_when_I_run
 def setupCookies(context):
     logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
