@@ -4,13 +4,13 @@
   <dependencies>
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-plone.app.contenttypes:default</dependency>
-    <dependency>profile-Products.ATContentTypes:default</dependency>
+    <dependency>Products.ATContentTypes:default</dependency>
     <dependency>profile-plone.app.caching:default</dependency>
     <dependency>profile-plone.app.dexterity:default</dependency>
     <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-archetypes.multilingual:default</dependency>
-    <dependency>profile-Products.RedirectionTool:default</dependency>
-    <dependency>profile-Products.PloneKeywordManager:default</dependency>
+    <dependency>Products.RedirectionTool:default</dependency>
+    <dependency>Products.PloneKeywordManager:default</dependency>
   </dependencies>
 </metadata>
