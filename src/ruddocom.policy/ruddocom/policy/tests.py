@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest2 as unittest
+import unittest
 from plone.app.multilingual.interfaces import ILanguage
 from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
 
