@@ -4,6 +4,11 @@ from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
 from Products.CMFPlone.interfaces import ILanguage
 
+default_profile = 'profile-ruddocom.policy:default'
+
+
+def setupRegistry(context):
+    context.runImportStepFromProfile(default_profile, 'registry')
 
 def createContent(context):
     logger = context.getLogger('ruddocom.policy')
@@ -37,5 +42,6 @@ def setupAll(context):
         return
     logger = context.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
+    setupRegistry(context)
     setupCookies(context)
     createContent(context)

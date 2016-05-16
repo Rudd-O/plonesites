@@ -29,7 +29,6 @@
       directory="profiles/default"
       description="Turn a site into Rudd-O.com"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler="ruddocom.policy.setupHandlers.setupAll"
       />
 
 </configure>
