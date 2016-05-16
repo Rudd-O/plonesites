@@ -1,6 +1,6 @@
 <registry>
     <records prefix="plone" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema">
-        <value key="site-title">Rudd-O.com</value>
+        <value key="site_title">Rudd-O.com</value>
     </records>
   <record name="plone.site_title" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="site_title">
     <field type="plone.registry.field.TextLine">
