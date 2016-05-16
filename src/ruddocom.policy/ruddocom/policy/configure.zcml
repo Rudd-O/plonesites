@@ -10,6 +10,14 @@
 
   <include package="plone.app.registry" />
 
+  <genericsetup:importStep
+      name="ruddocom.policy_default"
+      title="Rudd-O.com site policy default"
+      description="Do some various setup steps"
+      handler=".setupHandlers.setupAll"
+      <depends name="plone.app.registry:default" />
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"
