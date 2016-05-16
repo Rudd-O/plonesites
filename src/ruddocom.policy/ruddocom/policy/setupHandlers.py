@@ -10,7 +10,7 @@ default_profile = 'profile-ruddocom.policy:default'
 def createContent(context):
     import sys
     l = context.getSite().portal_quickinstaller.isProductInstalled('Products.ATContentTypes')
-    print >> sys.stderr, "\nFUCK", "l", "\n"
+    print >> sys.stderr, "\nFUCK", l, "\n"
     logger = context.getLogger('ruddocom.policy')
     logger.info("Creating content")
     l = context.getSite()
