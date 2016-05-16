@@ -4,7 +4,6 @@
  <object name="site_properties" meta_type="Plone Property Sheet" purge="False">
   <property name="default_language" type="string">en</property>
   <property name="default_charset" type="string">utf-8</property>
-  <property name="default_editor" type="string">CKeditor</property>
   <property name="visible_ids" type="boolean">True</property>
   <property name="exposeDCMetaTags" type="boolean">True</property>
   <property name="default_contenttype" type="string">text/html</property>
@@ -20,8 +19,5 @@
    <element value="text/x-web-intelligent"/>
    <element value="text/x-html-captioned"/>
   </property>
- </object>
- <object name="ckeditor_properties" meta_type="Plone Property Sheet" purge="False">
-  <property name="filtering" type="string">disabled</property>
  </object>
 </object>

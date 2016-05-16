@@ -44,11 +44,6 @@ class TestSetup(unittest.TestCase):
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('plone.app.caching'))
 
-    def test_ckeditor_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('collective.ckeditor'))
-
     def test_linguaplone_not_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
@@ -87,7 +82,6 @@ class TestSetup(unittest.TestCase):
         l = portal['portal_properties']['site_properties']
         self.assertEquals(l.default_language, 'en')
         self.assertEquals(l.default_charset, 'utf-8')
-        self.assertEquals(l.default_editor, 'CKeditor')
         self.assertEquals(l.visible_ids, True)
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.default_contenttype, 'text/html')
@@ -138,9 +132,3 @@ class TestSetup(unittest.TestCase):
         css = portal['portal_css']
         resources = css.resources
         assert "cssoverrides.css" in [ r.getId() for r in resources ]
-
-    def test_ckeditor(self):
-        portal = self.layer['portal']
-        props = portal['portal_properties']
-        ckeditor = props["ckeditor_properties"]
-        assert "disabled" == ckeditor.filtering

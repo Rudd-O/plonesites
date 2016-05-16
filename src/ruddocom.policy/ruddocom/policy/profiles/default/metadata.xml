@@ -4,7 +4,6 @@
   <dependencies>
     <dependency>profile-Products.PloneKeywordManager:default</dependency>
     <dependency>profile-plone.app.caching:default</dependency>
-    <dependency>profile-collective.ckeditor:default</dependency>
     <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-archetypes.multilingual:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
