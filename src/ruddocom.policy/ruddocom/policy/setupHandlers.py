@@ -34,7 +34,8 @@ def setupCookies(context):
 def setupAll(context):
     logger = logging.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
-    if context.readDataFile('ruddocom.policy.txt') is None:
+    datafile = context.readDataFile('ruddocom.policy.txt') if hasattr(context, 'readDataFile') else None
+    if datafile is None:
         # Not your add-on
         return
     setupCookies(context)
