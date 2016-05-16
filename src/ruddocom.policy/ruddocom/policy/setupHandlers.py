@@ -8,6 +8,8 @@ default_profile = 'profile-ruddocom.policy:default'
 
 
 def createContent(context):
+    import sys
+    print >> sys.stderr, "\nFUCK\n"
     logger = context.getLogger('ruddocom.policy')
     logger.info("Creating content")
     l = context.getSite()
