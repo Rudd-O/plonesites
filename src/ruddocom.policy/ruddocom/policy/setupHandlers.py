@@ -15,9 +15,9 @@ def createContent(context):
     logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
-        l.invokeFactory("Folder", "en")
+        l.invokeFactory("ATFolder", "en")
     if "es" not in l:
-        l.invokeFactory("Folder", "es")
+        l.invokeFactory("ATFolder", "es")
     l['en'].setTitle(u"Rudd-O.com in English")
     l['es'].setTitle(u"Rudd-O.com en español")
     l['en'].setDescription(u"Linux, free software, voluntaryism and cypherpunk.  Established 1999.")
