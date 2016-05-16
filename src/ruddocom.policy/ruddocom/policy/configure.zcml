@@ -18,10 +18,9 @@
       handler=".setupHandlers.setupAll">
           <depends name="typeinfo" />
           <depends name="registry" />
+          <depends name="content" />
           <depends name="plone.app.registry_default" />
           <depends name="plone.app.multilingual_default" />
-          <depends name="content" />
-          <depends name="componentregistry" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
