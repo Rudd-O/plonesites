@@ -6,15 +6,6 @@ from Products.CMFPlone.interfaces import ILanguage
 import logging
 
 
-def only_when_I_run(func):
-    def importStep(context):
-        if context.readDataFile('ruddocom.policy.txt') is None:
-            # Not your add-on
-            return
-        return func(context)
-    importStep.func_name = func.func_name
-    return importStep
-
 def createContent(context):
     logger = logging.getLogger('ruddocom.policy')
     logger.info("Creating content")
@@ -32,6 +23,7 @@ def createContent(context):
     logger.info("Content created")
 
 def setupCookies(context):
+    logger = logging.getLogger('ruddocom.policy')
     logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
     l.timeout = 604800
@@ -39,7 +31,11 @@ def setupCookies(context):
     l.secure = True
     logger.info("Cookie expiry time set")
 
-@only_when_I_run
 def setupAll(context):
+    logger = logging.getLogger('ruddocom.policy')
+    logger.info("Beginning setupAll with context %s", context)
+    if context.readDataFile('ruddocom.policy.txt') is None:
+        # Not your add-on
+        return
     setupCookies(context)
     createContent(context)
