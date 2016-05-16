@@ -7,6 +7,8 @@ from Products.CMFPlone.interfaces import ILanguageSchema
 from Products.CMFPlone.interfaces import ISiteSchema
 from zope.component.hooks import setSite
 from plone import api
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 
 class TestSetup(unittest.TestCase):
@@ -69,9 +71,8 @@ class TestSetup(unittest.TestCase):
     def test_portal_properties(self):
         portal = self.layer['portal']
         setSite(portal)
-        def f(x):
-            return api.portal.get_registry_record(x)
-        l= registry.forInterface(ISiteSchema, prefix='plone')
+        registry = getUtility(IRegistry)
+        l = registry.forInterface(ISiteSchema, prefix='plone')
         self.assertEquals(l.default_language, 'en')
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.enable_sitemap, True)
@@ -79,7 +80,7 @@ class TestSetup(unittest.TestCase):
                       l.webstats_js)
 
     def test_portal_structure(self):
-        site = self.layer['portal']
+        portal = self.layer['portal']
         setSite(portal)
         l = site['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
