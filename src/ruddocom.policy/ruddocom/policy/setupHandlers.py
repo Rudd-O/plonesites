@@ -3,7 +3,7 @@
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
-from plone.app.multilingual.interfaces import ILanguage
+from Products.CMFPlone.interfaces import ILanguage
 
 def only_when_I_run(func):
     def importStep(context):
