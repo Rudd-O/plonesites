@@ -15,6 +15,7 @@
       title="Rudd-O.com site policy default"
       description="Do some various setup steps"
       handler=".setupHandlers.setupAll"
+      <depends name="typeinfo" />
       <depends name="plone.app.registry:default" />
       />
 
