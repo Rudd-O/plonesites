@@ -16,6 +16,8 @@ def only_when_I_run(func):
 
 @only_when_I_run
 def createContent(context):
+    logger = logging.getLogger('ruddocom.policy')
+    logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
         l.invokeFactory("Folder", "en")
@@ -27,10 +29,18 @@ def createContent(context):
     l['es'].setDescription(u"Linux, software libre, voluntarismo y cypherpunk.  Desde 1999.")
     ILanguage(l['en']).set_language('en')
     ILanguage(l['es']).set_language('es')
+    logger.info("Content created")
 
 @only_when_I_run
 def setupCookies(context):
+    logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
     l.timeout = 604800
     l.cookie_lifetime = 7
     l.secure = True
+    logger.info("Cookie expiry time set")
+
+@only_when_I_run
+def setupAll(context):
+    setupCookies(context)
+    createContent(context)

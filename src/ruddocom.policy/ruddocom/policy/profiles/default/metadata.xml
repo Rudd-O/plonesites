@@ -6,7 +6,6 @@
     <dependency>profile-plone.app.caching:default</dependency>
     <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-archetypes.multilingual:default</dependency>
-    <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-Products.RedirectionTool:default</dependency>
   </dependencies>
 </metadata>
