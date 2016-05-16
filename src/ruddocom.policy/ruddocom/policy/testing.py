@@ -15,6 +15,8 @@ class RuddocomPolicy(PloneSandboxLayer):
                         )
 
     def setUpPloneSite(self, portal):
+        if api.env.plone_version().startswith("5"):
+            portal.portal_quickinstaller.installProduct("plone.app.contenttypes")
         applyProfile(portal, 'ruddocom.policy:default')
 
 RUDDOCOM_POLICY_FIXTURE = RuddocomPolicy()
