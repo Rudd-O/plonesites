@@ -50,6 +50,4 @@
 
   <include file="upgrades.zcml" />
 
-  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
-
 </configure>

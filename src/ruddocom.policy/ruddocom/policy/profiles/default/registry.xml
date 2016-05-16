@@ -1,0 +1,289 @@
+<registry>
+  <record name="plone.site_title" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="site_title">
+    <field type="plone.registry.field.TextLine">
+      <default>Plone site</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">This shows up in the title bar of browsers and in syndication feeds.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site title</title>
+    </field>
+    <value>Rudd-O.com</value>
+  </record>
+  <record name="plone.email_from_address" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_address">
+    <field type="plone.registry.field.ASCIILine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this address as the e-mail return address. It is also used as the destination address for the site-wide contact form and the 'Send test e-mail' feature.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' address</title>
+    </field>
+    <value>webmaster@rudd-o.com</value>
+  </record>
+  <record name="plone.email_from_name" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_name">
+    <field type="plone.registry.field.TextLine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this name as the e-mail sender.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' name</title>
+    </field>
+    <value>Webmaster at Rudd-O.com</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.render_body" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="render_body">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_render_body">If body text available for item, render it, otherwise use description.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Render Body</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.max_items" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="max_items">
+    <field type="plone.registry.field.Int">
+      <default>15</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_syndication_max_items">Maximum number of items that will be syndicated.</description>
+      <min>1</min>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_syndication_max_items">Maximum items</title>
+    </field>
+    <value>20</value>
+  </record>
+  <record name="plone.allow_anon_views_about" interface="Products.CMFPlone.interfaces.controlpanel.ISecuritySchema" field="allow_anon_views_about">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">If not selected only logged-in users will be able to view information about who created an item and when it was modified.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Allow anyone to view 'about' information</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.allowed_sizes" interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema" field="allowed_sizes">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>large 768:768</element>
+        <element>preview 400:400</element>
+        <element>mini 200:200</element>
+        <element>thumb 128:128</element>
+        <element>tile 64:64</element>
+        <element>icon 32:32</element>
+        <element>listing 16:16</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Specify all allowed maximum image dimensions, one per line. The required format is &amp;lt;name&amp;gt; &amp;lt;width&amp;gt;:&amp;lt;height&amp;gt;.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Allowed image sizes</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>fullhd 1920:1080</element>
+      <element>large 768:768</element>
+      <element>preview 400:400</element>
+      <element>mini 200:200</element>
+      <element>thumb 128:128</element>
+      <element>tile 64:64</element>
+      <element>icon 32:32</element>
+      <element>listing 16:16</element>
+    </value>
+  </record>
+  <record name="plone.allowed_types" interface="Products.CMFPlone.interfaces.controlpanel.IMarkupSchema" field="allowed_types">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>text/html</element>
+        <element>text/x-web-textile</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Select which formats are available for users as alternative to the default format. Note that if new formats are installed, they will be enabled for text fields by default unless explicitly turned off here or by the relevant installer.</description>
+      <missing_value/>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Alternative formats</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.AllowableContentTypes</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>text/html</element>
+      <element>text/x-web-markdown</element>
+      <element>text/x-web-textile</element>
+    </value>
+  </record>
+  <record name="plone.always_show_selector" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="always_show_selector">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">help_always_show_selector</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_always_show_selector">Always show language selector</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.contains_objects" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCEResourceTypesSchema" field="contains_objects">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>Folder</element>
+        <element>Large Plone Folder</element>
+        <element>Plone Site</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Enter a list of content types which can contain other objects. Format is one contenttype per line.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Contains objects</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>Folder</element>
+      <element>Large Plone Folder</element>
+      <element>Plone Site</element>
+      <element>LIF</element>
+    </value>
+  </record>
+  <record name="plone.display_publication_date_in_byline" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="display_publication_date_in_byline">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Show the date a content item was published in the byline.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Display publication date</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.displayed_types" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="displayed_types">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>Image</element>
+        <element>File</element>
+        <element>Link</element>
+        <element>News Item</element>
+        <element>Folder</element>
+        <element>Document</element>
+        <element>Event</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">The content types that should be shown in the navigation and site map.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Displayed content types</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.ReallyUserFriendlyTypes</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>Collection</element>
+      <element>Document</element>
+      <element>Event</element>
+      <element>File</element>
+      <element>Folder</element>
+      <element>Image</element>
+      <element>LIF</element>
+      <element>LRF</element>
+      <element>Link</element>
+      <element>News Item</element>
+      <element>Topic</element>
+      <element>picture</element>
+    </value>
+  </record>
+  <record name="plone.enable_sitemap" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="enable_sitemap">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Exposes your content as a file according to the sitemaps.org standard. You can submit this to compliant search engines like Google, Yahoo and Microsoft. It allows these search engines to more intelligently crawl your site.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Expose sitemap.xml.gz</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.exposeDCMetaTags" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="exposeDCMetaTags">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Exposes the Dublin Core properties as metatags.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Expose Dublin Core metadata</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.nasty_tags" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="nasty_tags">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>style</element>
+        <element>object</element>
+        <element>embed</element>
+        <element>applet</element>
+        <element>script</element>
+        <element>meta</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">These tags, and their content are completely blocked when a page is saved or rendered.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Nasty tags</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>applet</element>
+      <element>script</element>
+      <element>meta</element>
+    </value>
+  </record>
+  <record name="plone.sitemap_depth" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="sitemap_depth">
+    <field type="plone.registry.field.Int">
+      <default>3</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Number of folder levels to show in the site map.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sitemap depth</title>
+    </field>
+    <value>5</value>
+  <record name="plone.types_not_searched" interface="Products.CMFPlone.interfaces.controlpanel.ISearchSchema" field="types_not_searched">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>Discussion Item</element>
+        <element>Plone Site</element>
+        <element>TempFolder</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Define the types that should be searched and be available in the user facing part of the site. Note that if new content types are installed, they will be enabled by default unless explicitly turned off here or by the relevant installer.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Define the types to be shown in the site and searched</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.PortalTypes</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>Discussion Item</element>
+    </value>
+  </record>
+  <record name="plone.use_cctld_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_cctld_negotiation">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_top_level_domain">e.g.: www.plone.de</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_top_level_domain">Use top-level domain</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.use_combined_language_codes" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_combined_language_codes">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_allow_combined_language_codes">Examples: pt-br (Brazilian Portuguese), en-us (American English) etc.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_allow_combined_language_codes">Show country-specific language variants</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.use_content_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_content_negotiation">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_language_of_the_content">Use the language of the content item.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_language_of_the_content">Use the language of the content item</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.use_cookie_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_cookie_negotiation">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_cookie_manual_override">Required for the language selector viewlet to be rendered.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_cookie_manual_override">Use cookie for manual override</title>
+    </field>
+    <value>False</value>
+  </record>
+  <record name="plone.use_subdomain_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_subdomain_negotiation">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="description_use_subdomain">e.g.: de.plone.org</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="heading_use_subdomain">Use subdomain</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.webstats_js" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="webstats_js">
+    <field type="plone.registry.field.SourceText">
+      <default></default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">For enabling web statistics support from external providers (for e.g. Google Analytics). Paste the code snippets provided. It will be included in the rendered HTML as entered near the end of the page.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">JavaScript for web statistics support</title>
+    </field>
+    <value>&lt;script type="text/javascript"&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();&lt;/script&gt;</value>
+  </record>
+</registry>

@@ -2,7 +2,6 @@
 
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
-from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from Products.CMFPlone.interfaces import ILanguage
 
 def only_when_I_run(func):
@@ -13,27 +12,6 @@ def only_when_I_run(func):
         return func(context)
     importStep.func_name = func.func_name
     return importStep
-
-
-@only_when_I_run
-def setupPortalTransforms(context):
-    tid = 'safe_html'
-
-    pt = getToolByName(context, 'portal_transforms')
-    if not tid in pt.objectIds(): return
-
-    trans = pt[tid]
-
-    permit = ["embed", "object", "style", "iframe"]
-
-    tconfig = trans._config
-    for p in permit:
-        if p in tconfig['nasty_tags']: del tconfig['nasty_tags'][p]
-        if p not in tconfig['valid_tags']: tconfig['valid_tags'][p] = '1'
-
-    make_config_persistent(tconfig)
-    trans._p_changed = True
-    trans.reload()
 
 
 @only_when_I_run
@@ -56,24 +34,3 @@ def setupCookies(context):
     l.timeout = 604800
     l.cookie_lifetime = 7
     l.secure = True
-
-@only_when_I_run
-def switchToMultilingual(context):
-    qi = getToolByName(context.getSite(), 'portal_quickinstaller')
-    activated = False
-    if not qi.isProductInstalled('plone.app.multilingual'):
-        qi.installProduct('plone.app.multilingual')
-        activated = True
-    if not qi.isProductInstalled('archetypes.multilingual'):
-        qi.installProduct('archetypes.multilingual')
-        activated = True
-    if qi.isProductInstalled('LinguaPlone'):
-        qi.uninstallProducts(['LinguaPlone'])
-    pl = getToolByName(context.getSite(), 'portal_languages')
-    pl.default_language = "en"
-    pl.supported_langs = ['en', 'es']
-    pl.use_cookie_negotiation = False
-    pl.use_subdomain_negotiation = True
-    if activated:
-        s = SetupMultilingualSite(context=context.getSite())
-        s.setupSite(context.getSite())
