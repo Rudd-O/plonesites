@@ -72,8 +72,9 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         setSite(portal)
         registry = getUtility(IRegistry)
-        l = registry.forInterface(ISiteSchema, prefix='plone')
+        l = registry.forInterface(ILanguageSchema, prefix='plone')
         self.assertEquals(l.default_language, 'en')
+        l = registry.forInterface(ISiteSchema, prefix='plone')
         self.assertEquals(l.exposeDCMetaTags, True)
         self.assertEquals(l.enable_sitemap, True)
         self.assertIn("<script type=\"text/javascript\">",

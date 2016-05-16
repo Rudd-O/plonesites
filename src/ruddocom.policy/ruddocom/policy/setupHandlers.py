@@ -3,11 +3,10 @@
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
 from Products.CMFPlone.interfaces import ILanguage
-import logging
 
 
 def createContent(context):
-    logger = logging.getLogger('ruddocom.policy')
+    logger = context.getLogger('ruddocom.policy')
     logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
@@ -23,7 +22,7 @@ def createContent(context):
     logger.info("Content created")
 
 def setupCookies(context):
-    logger = logging.getLogger('ruddocom.policy')
+    logger = context.getLogger('ruddocom.policy')
     logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
     l.timeout = 604800
@@ -32,7 +31,7 @@ def setupCookies(context):
     logger.info("Cookie expiry time set")
 
 def setupAll(context):
-    logger = logging.getLogger('ruddocom.policy')
+    logger = context.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
     datafile = context.readDataFile('ruddocom.policy.txt') if hasattr(context, 'readDataFile') else None
     if datafile is None:
