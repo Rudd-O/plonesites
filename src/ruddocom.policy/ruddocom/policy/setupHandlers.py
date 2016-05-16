@@ -31,11 +31,11 @@ def setupCookies(context):
     logger.info("Cookie expiry time set")
 
 def setupAll(context):
-    logger = context.getLogger('ruddocom.policy')
-    logger.info("Beginning setupAll with context %s", context)
     datafile = context.readDataFile('ruddocom.policy.txt') if hasattr(context, 'readDataFile') else None
     if datafile is None:
         # Not your add-on
         return
+    logger = context.getLogger('ruddocom.policy')
+    logger.info("Beginning setupAll with context %s", context)
     setupCookies(context)
     createContent(context)
