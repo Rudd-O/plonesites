@@ -213,6 +213,7 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Sitemap depth</title>
     </field>
     <value>5</value>
+  </record>
   <record name="plone.types_not_searched" interface="Products.CMFPlone.interfaces.controlpanel.ISearchSchema" field="types_not_searched">
     <field type="plone.registry.field.Tuple">
       <default>
