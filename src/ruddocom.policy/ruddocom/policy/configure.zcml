@@ -8,6 +8,8 @@
 
   <includeDependencies package="."/>
 
+  <include package="plone.app.registry" />
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"
@@ -16,7 +18,5 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler="ruddocom.policy.setupHandlers.setupAll"
       />
-
-  <include file="upgrades.zcml" />
 
 </configure>
