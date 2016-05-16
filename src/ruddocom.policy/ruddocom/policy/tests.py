@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
+#ila -*- coding: utf-8 -*-
 
 import unittest
-from plone.app.multilingual.interfaces import ILanguage
+import plone.api
 from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
-
 
 class TestSetup(unittest.TestCase):
 
@@ -116,10 +115,10 @@ class TestSetup(unittest.TestCase):
         site = self.layer['portal']
         l = site['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
-        self.assertEquals(ILanguage(l).get_language(), 'en')
+        self.assertEquals(plone.api.portal.get_current_language(l), 'en')
         l = site['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
-        self.assertEquals(ILanguage(l).get_language(), 'es')
+        self.assertEquals(plone.api.portal.get_current_language(l), 'es')
 
     def test_skin_content_appears(self):
         site = self.layer['portal']
