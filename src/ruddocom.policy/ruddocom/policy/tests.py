@@ -82,10 +82,10 @@ class TestSetup(unittest.TestCase):
     def test_portal_structure(self):
         portal = self.layer['portal']
         setSite(portal)
-        l = site['en']
+        l = portal['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
         self.assertEquals(plone.api.portal.get_current_language(l), 'en')
-        l = site['es']
+        l = portal['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
         self.assertEquals(plone.api.portal.get_current_language(l), 'es')
 
