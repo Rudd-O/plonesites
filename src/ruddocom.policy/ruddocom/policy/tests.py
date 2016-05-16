@@ -49,11 +49,6 @@ class TestSetup(unittest.TestCase):
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('collective.ckeditor'))
 
-    def test_plonefinder_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('collective.plonefinder'))
-
     def test_linguaplone_not_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
