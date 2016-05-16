@@ -14,10 +14,10 @@
       name="ruddocom.policy_default"
       title="Rudd-O.com site policy default"
       description="Do some various setup steps"
-      handler=".setupHandlers.setupAll"
-      <depends name="typeinfo" />
-      <depends name="plone.app.registry:default" />
-      />
+      handler=".setupHandlers.setupAll">
+          <depends name="typeinfo" />
+          <depends name="plone.app.registry:default" />
+  </genericsetup:importStep>
 
   <genericsetup:registerProfile
       name="default"
