@@ -8,9 +8,6 @@
 
   <includeDependencies package="."/>
 
-  <include package="plone.app.registry" />
-  <include package="plone.app.multilingual" />
-
   <genericsetup:importStep
       name="ruddocom.policy_default"
       title="Rudd-O.com site policy default"
@@ -19,8 +16,6 @@
           <depends name="typeinfo" />
           <depends name="registry" />
           <depends name="content" />
-          <depends name="plone.app.registry_default" />
-          <depends name="plone.app.multilingual_default" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
