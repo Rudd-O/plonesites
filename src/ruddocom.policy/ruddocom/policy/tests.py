@@ -19,7 +19,7 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         self.assertEqual(
                          "Rudd-O.com",
-                         portal.getProperty('title')
+                         portal.getProperty('site_title')
                          )
 
     def test_portal_email(self):
