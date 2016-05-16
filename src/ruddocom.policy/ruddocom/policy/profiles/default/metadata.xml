@@ -2,9 +2,9 @@
 <metadata>
   <version>8</version>
   <dependencies>
-    <dependency>profile-Products.PloneKeywordManager:default</dependency>
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-plone.app.contenttypes:default</dependency>
+    <dependency>profile-Products.ATContentTypes:default</dependency>
     <dependency>profile-plone.app.caching:default</dependency>
     <dependency>profile-plone.app.dexterity:default</dependency>
     <dependency>profile-plone.app.multilingual:default</dependency>
