@@ -62,14 +62,14 @@ find-links +=
 # Specify the ports on which your Zope installation
 # will listen.
 # ZEO Server
-zeo-address = /srv/plone/{{ deployment }}/var/zeosocket
+zeo-address = /srv/plone/{{ item }}/var/zeosocket
 # Zope client 1
-http-address = {{ zserver_address }}
+http-address = {{ plone.deployments[item].zserver_address }}
 # Additional clients:
-debugger-address = {{ debugger_address }}
+debugger-address = {{ plone.deployments[item].debugger_address }}
 
 # Deployment place
-deployment-dir = /srv/plone/{{ deployment }}
+deployment-dir = /srv/plone/{{ item }}
 # temporarily disabling the
 # site-id = Rudd-O.com
 
@@ -171,7 +171,7 @@ verbose-security = off
 # commands. Default is inside this project's var directory, but ideally
 # this should be on a separate volume or backup server.
 # 
-backups-dir=/srv/plone/{{ deployment }}/backups
+backups-dir=/srv/plone/{{ item }}/backups
 
 
 ############################################
