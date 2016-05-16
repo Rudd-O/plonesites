@@ -1,5 +1,4 @@
 from plone import api
-from plone.app.testig import ploneSite
 from plone.app.testing import PloneSandboxLayer, applyProfile, PLONE_FIXTURE
 from plone.app.testing import IntegrationTesting
 from plone.testing import z2
@@ -11,7 +10,11 @@ class RuddocomPolicy(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load ZCML
         import ruddocom.policy
-        self.loadZCML(package=ruddocom.policy)
+        xmlconfig.file(
+            'configure.zcml',
+            ruddocom.policy,
+            context=configurationContext
+        )
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'ruddocom.policy:default')
