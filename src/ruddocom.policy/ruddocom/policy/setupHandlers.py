@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.multilingual.interfaces import ILanguage
+
+logger = logging.getLogger('ruddocom.policy')
+
 
 def only_when_I_run(func):
     def importStep(context):
@@ -80,7 +84,9 @@ def switchToMultilingual(context):
 
 @only_when_I_run
 def cleanupBeforeUpgrade(context):
+    logger.info("Starting cleanupBeforeUpgrade")
     qi = getToolByName(context.getSite(), 'portal_quickinstaller')
     qi.uninstallProducts(['collective.ckeditor', 'collective.plonefinder', 'collective.quickupload', 'collective.searchandreplace'])
     catalog = getToolByName(context.getSite(), 'portal_catalog')
     catalog.refreshCatalog(clear=1)
+    logger.info("cleanupBeforeUpgrade finished")
