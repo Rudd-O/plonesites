@@ -37,4 +37,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:importStep
+      name="plone5_upgrade"
+      title="Rudd-O.com Plone 5 upgrade"
+      description="Rudd-O.com Plone 5 upgrade"
+      handler="ruddocom.policy.setupHandlers.upgradeContent">
+  </genericsetup:importStep>
+
 </configure>

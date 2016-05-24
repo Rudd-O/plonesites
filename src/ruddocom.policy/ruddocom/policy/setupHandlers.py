@@ -6,6 +6,15 @@ from Products.CMFPlone.interfaces import ILanguage
 
 default_profile = 'profile-ruddocom.policy:default'
 
+def only_when_I_run(func):
+    def importStep(context):
+        if context.readDataFile('ruddocom.policy.txt') is None:
+            # Not your add-on
+            return
+        return func(context)
+    importStep.func_name = func.func_name
+    return importStep
+
 
 def createContent(context):
     import sys
@@ -44,3 +53,17 @@ def setupAll(context):
     logger.info("Beginning setupAll with context %s", context)
     setupCookies(context)
     createContent(context)
+
+@only_when_I_run
+def upgradeContent(context):
+    ps = getToolByName(context.getSite(), 'portal_setup')
+    try:
+        ps.manage_deleteImportSteps(['ckeditor-uninstall','collective.z3cform.datetimewidget','languagetool'])
+        ps.manage_deleteExportSteps(['languagetool'])
+    except:
+        pass
+    ps.runImportStepFromProfile('profile-plone.app.multilingual:default', 'plone.app.registry')
+    qi = getToolByName(context.getSite(), 'portal_quickinstaller')
+    qi.reinstallProducts(['PloneKeywordManager','RedirectionTool'])
+    qi.installProducts(['plone.app.contenttypes'])
+    qi.reinstallProducts(['plone.app.multilingual'])

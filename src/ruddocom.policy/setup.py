@@ -27,16 +27,6 @@ setup(name='ruddocom.policy',
       install_requires=[
           'setuptools',
           'Plone',
-          'Products.PloneKeywordManager',
-          'plone.app.caching',
-          'plone.app.dexterity',
-          'plone.app.multilingual >= 2.0.1',
-          'Products.ATContentTypes',
-          'archetypes.multilingual >= 2.0.1dev0',
-          'plone.app.contenttypes',
-          'plone.app.theming',
-          'Products.RedirectionTool',
-          'wildcard.fixpersistentutilities >= 1.1b7',
       ],
       # -*- Extra requirements: -*-
       extras_require={
