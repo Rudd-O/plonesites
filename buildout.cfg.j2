@@ -89,24 +89,11 @@ eggs =
     Plone
     Pillow
 #   WANTED PRODUCTS versions pinned in versions.cfg
-    collective.ckeditor
     Products.PloneKeywordManager
     Products.RedirectionTool
     Products.DocFinderTab
-    collective.searchandreplace
 #   DEVELOP-EGG VERSIONS
-    collective.blog.feeds
     ruddocom.policy [test]
-    Products.PloneKeywordManager
-    plone.app.caching
-    collective.ckeditor
-    collective.plonefinder
-    plone.app.dexterity
-    plone.app.multilingual
-    archetypes.multilingual
-    plone.app.theming
-    Products.RedirectionTool
-    wildcard.fixpersistentutilities
 
 # These are the eggs that will be tested.
 test-eggs =
@@ -144,7 +131,6 @@ test-eggs =
 # use them. Eggs with names beginning with "Products."
 # usually don't need this.
 zcml =
-     collective.searchandreplace
 
 ############################################
 # Development Eggs
@@ -159,7 +145,6 @@ zcml =
 # Provide the *paths* to the eggs you are developing here:
 develop =
     src/archetypes.multilingual
-    src/collective.blog.feeds
     src/ruddocom.policy
 
 ############################################
@@ -181,7 +166,7 @@ verbose-security = off
 # commands. Default is inside this project's var directory, but ideally
 # this should be on a separate volume or backup server.
 # 
-backups-dir=/srv/plone/{{ deployment }}/backups
+backups-dir=/srv/plone/{{ item }}/backups
 
 
 ############################################
