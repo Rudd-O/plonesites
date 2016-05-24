@@ -95,6 +95,7 @@
       <element>text/html</element>
       <element>text/x-web-markdown</element>
       <element>text/x-web-textile</element>
+      <element>text/x-sh</element>
     </value>
   </record>
   <record name="plone.always_show_selector" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="always_show_selector">
