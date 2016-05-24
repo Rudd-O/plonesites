@@ -77,3 +77,10 @@ def switchToMultilingual(context):
     if activated:
         s = SetupMultilingualSite(context=context.getSite())
         s.setupSite(context.getSite())
+
+@only_when_I_run
+def cleanupBeforeUpgrade(context):
+    qi = getToolByName(context.getSite(), 'portal_quickinstaller')
+    qi.uninstallProducts(['collective.ckeditor', 'collective.plonefinder', 'collective.quickupload', 'collective.searchandreplace'])
+    catalog = getToolByName(context.getSite(), 'portal_catalog')
+    catalog.refreshCatalog(clear=1)

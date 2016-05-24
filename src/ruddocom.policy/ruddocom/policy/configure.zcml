@@ -9,6 +9,14 @@
   <includeDependencies package="."/>
 
   <genericsetup:importStep
+      name="pre_plone5_upgrade"
+      title="Rudd-O.com prepare Plone 5 upgrade"
+      description="Rudd-O.com prepare Plone 5 upgrade"
+      handler="ruddocom.policy.setupHandlers.cleanupBeforeUpgrade">
+  </genericsetup:importStep>
+
+
+  <genericsetup:importStep
       name="ruddocom-multilingual"
       title="Rudd-O.com multilingual setup"
       description="Enable plone.app.multilingual"
