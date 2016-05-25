@@ -17,16 +17,13 @@ def only_when_I_run(func):
 
 
 def createContent(context):
-    import sys
-    l = context.getSite().portal_quickinstaller.isProductInstalled('Products.ATContentTypes')
-    print >> sys.stderr, "\nFUCK", l, "\n"
     logger = context.getLogger('ruddocom.policy')
     logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
-        l.invokeFactory("ATFolder", "en")
+        l.invokeFactory("Folder", "en")
     if "es" not in l:
-        l.invokeFactory("ATFolder", "es")
+        l.invokeFactory("Folder", "es")
     l['en'].setTitle(u"Rudd-O.com in English")
     l['es'].setTitle(u"Rudd-O.com en español")
     l['en'].setDescription(u"Linux, free software, voluntaryism and cypherpunk.  Established 1999.")

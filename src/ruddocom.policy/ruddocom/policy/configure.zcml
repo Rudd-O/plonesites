@@ -8,12 +8,10 @@
 
   <include package="plone.app.registry" />
   <include package="plone.app.contenttypes" />
-  <include package="Products.ATContentTypes" />
   <include package="plone.app.caching" />
   <include package="plone.app.dexterity" />
   <include package="plone.app.multilingual" />
   <include package="plone.app.theming" />
-  <include package="archetypes.multilingual" />
   <include package="Products.RedirectionTool" />
   <include package="Products.PloneKeywordManager" />
 
@@ -25,8 +23,6 @@
           <depends name="typeinfo" />
           <depends name="registry" />
           <depends name="content" />
-          <depends name="profile-Products.ATContentTypes:default" />
-          <depends name="profile-archetypes.multilingual:default" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
