@@ -298,6 +298,57 @@
     </field>
     <value>True</value>
   </record>
+  <record name="plone.display_flags" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="display_flags">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_display_flags">Show language flags</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.display_publication_date_in_byline" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="display_publication_date_in_byline">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Show the date a content item was published in the byline.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Display publication date</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.displayed_types" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="displayed_types">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>Image</element>
+        <element>File</element>
+        <element>Link</element>
+        <element>News Item</element>
+        <element>Folder</element>
+        <element>Document</element>
+        <element>Event</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">The content types that should be shown in the navigation and site map.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Displayed content types</title>
+      <value_type type="plone.registry.field.Choice">
+        <vocabulary>plone.app.vocabularies.ReallyUserFriendlyTypes</vocabulary>
+      </value_type>
+    </field>
+    <value>
+      <element>Collection</element>
+      <element>Document</element>
+      <element>Event</element>
+      <element>File</element>
+      <element>Folder</element>
+      <element>Image</element>
+      <element>LIF</element>
+      <element>LRF</element>
+      <element>Link</element>
+      <element>News Item</element>
+      <element>Topic</element>
+      <element>picture</element>
+    </value>
+  </record>
   <record name="plone.use_subdomain_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_subdomain_negotiation">
     <field type="plone.registry.field.Bool">
       <default>False</default>
@@ -315,5 +366,28 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">JavaScript for web statistics support</title>
     </field>
     <value>&lt;script type="text/javascript"&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();&lt;/script&gt;</value>
+  </record>
+  <record name="plone.email_from_address" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_address">
+    <field type="plone.registry.field.ASCIILine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this address as the e-mail return address. It is also used as the destination address for the site-wide contact form and the 'Send test e-mail' feature.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' address</title>
+    </field>
+    <value>webmaster@rudd-o.com</value>
+  </record>
+  <record name="plone.email_from_name" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_name">
+    <field type="plone.registry.field.TextLine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this name as the e-mail sender.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' name</title>
+    </field>
+    <value>Webmaster at Rudd-O.com</value>
+  </record>
+  <record name="plone.enable_link_integrity_checks" interface="Products.CMFPlone.interfaces.controlpanel.IEditingSchema" field="enable_link_integrity_checks">
+    <field type="plone.registry.field.Bool">
+      <default>True</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Determines if the users should get warnings when they delete or move content that is linked from inside the site.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Enable link integrity checks</title>
+    </field>
+    <value>True</value>
   </record>
 </registry>
