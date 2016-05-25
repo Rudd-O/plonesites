@@ -23,8 +23,10 @@ setup(name='ruddocom.policy',
       namespace_packages=['ruddocom'],
       include_package_data=True,
       zip_safe=False,
+      # Keep me in sync with metadata.xml
       install_requires=[
           'setuptools',
+          'Plone',
       ],
       # -*- Extra requirements: -*-
       extras_require={

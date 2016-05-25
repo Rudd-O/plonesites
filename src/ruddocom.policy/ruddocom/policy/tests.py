@@ -1,8 +1,14 @@
-# -*- coding: utf-8 -*-
+#ila -*- coding: utf-8 -*-
 
-import unittest2 as unittest
-from plone.app.multilingual.interfaces import ILanguage
+import unittest
+import plone.api
 from ruddocom.policy.testing import RUDDOCOM_POLICY_INTEGRATION_TESTING
+from Products.CMFPlone.interfaces import ILanguageSchema
+from Products.CMFPlone.interfaces import ISiteSchema
+from zope.component.hooks import setSite
+from plone import api
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 
 class TestSetup(unittest.TestCase):
@@ -13,16 +19,8 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         self.assertEqual(
                          "Rudd-O.com",
-                         portal.getProperty('title')
+                         portal.getProperty('site_title')
                          )
-
-    def test_portal_description(self):
-        portal = self.layer['portal']
-        self.assertEqual(
-                         "Linux, free software, voluntaryism and cypherpunk "
-                         "discussion.  Established 1999.",
-                         portal.getProperty('description')
-        )
 
     def test_portal_email(self):
         portal = self.layer['portal']
@@ -45,31 +43,10 @@ class TestSetup(unittest.TestCase):
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('plone.app.caching'))
 
-    def test_ckeditor_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('collective.ckeditor'))
-
-    def test_plonefinder_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('collective.plonefinder'))
-
-    def test_linguaplone_not_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertFalse(qi.isProductInstalled('LinguaPlone'))
-
     def test_multilingual_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled('plone.app.multilingual'))
-        self.assertTrue(qi.isProductInstalled('archetypes.multilingual'))
-
-    def test_diazo_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('plone.app.theming'))
 
     def test_redirectiontool_installed(self):
         portal = self.layer['portal']
@@ -78,56 +55,39 @@ class TestSetup(unittest.TestCase):
 
     def test_linguaplone_settings_correct(self):
         portal = self.layer['portal']
-        l = portal['portal_languages']
-        self.assertEquals(l.supported_langs, ['en', 'es'])
-        self.assertEquals(l.use_cctld_negotiation, False)
-        self.assertEquals(l.use_combined_language_codes, False)
-        self.assertEquals(l.use_content_negotiation, True)
-        self.assertEquals(l.use_cookie_negotiation, False)
-        self.assertEquals(l.use_path_negotiation, False)
-        self.assertEquals(l.use_request_negotiation, False)
-        self.assertEquals(l.use_subdomain_negotiation, True)
+        setSite(portal)
+        def f(x):
+            return api.portal.get_registry_record(x)
+        self.assertEquals(f('plone.available_languages'), ['en', 'es'])
+        self.assertEquals(f('plone.use_cctld_negotiation'), False)
+        self.assertEquals(f('plone.use_combined_language_codes'), False)
+        self.assertEquals(f('plone.use_content_negotiation'), True)
+        self.assertEquals(f('plone.use_cookie_negotiation'), False)
+        self.assertEquals(f('plone.use_path_negotiation'), False)
+        self.assertEquals(f('plone.use_request_negotiation'), False)
+        self.assertEquals(f('plone.use_subdomain_negotiation'), True)
 
     def test_portal_properties(self):
         portal = self.layer['portal']
-        l = portal['portal_properties']['site_properties']
+        setSite(portal)
+        registry = getUtility(IRegistry)
+        l = registry.forInterface(ILanguageSchema, prefix='plone')
         self.assertEquals(l.default_language, 'en')
-        self.assertEquals(l.default_charset, 'utf-8')
-        self.assertEquals(l.default_editor, 'CKeditor')
-        self.assertEquals(l.visible_ids, True)
+        l = registry.forInterface(ISiteSchema, prefix='plone')
         self.assertEquals(l.exposeDCMetaTags, True)
-        self.assertEquals(l.default_contenttype, 'text/html')
         self.assertEquals(l.enable_sitemap, True)
-        self.assertNotIn("text/x-web-markdown", l.forbidden_contenttypes)
         self.assertIn("<script type=\"text/javascript\">",
                       l.webstats_js)
 
-    def test_safe_html(self):
-        portal = self.layer['portal']
-        l = portal['portal_transforms']['safe_html']
-
-        permit = ["embed", "object", "style", "iframe"]
-        tconfig = l._config
-        for p in permit:
-            self.assertIn(p, tconfig['valid_tags'])
-            self.assertNotIn(p, tconfig['nasty_tags'])
-
     def test_portal_structure(self):
-        site = self.layer['portal']
-        l = site['en']
+        portal = self.layer['portal']
+        setSite(portal)
+        l = portal['en']
         self.assertEquals(l.title, u'Rudd-O.com in English')
-        self.assertEquals(ILanguage(l).get_language(), 'en')
-        l = site['es']
+        self.assertEquals(plone.api.portal.get_current_language(l), 'en')
+        l = portal['es']
         self.assertEquals(l.title, u'Rudd-O.com en español')
-        self.assertEquals(ILanguage(l).get_language(), 'es')
-
-    def test_skin_content_appears(self):
-        site = self.layer['portal']
-        l = site['portal_skins']
-        self.assertIn('ruddocom', l)
-        s = l['ruddocom']
-        self.assertIn('facebook-favicon.png', s)
-        self.assertIn('github-favicon.ico', s)
+        self.assertEquals(plone.api.portal.get_current_language(l), 'es')
 
     def test_cookies(self):
         portal = self.layer['portal']
@@ -135,18 +95,3 @@ class TestSetup(unittest.TestCase):
         self.assertEquals(l.timeout, 604800)
         self.assertEquals(l.cookie_lifetime, 7)
         self.assertEquals(l.secure, True)
-
-    def test_css(self):
-        portal = self.layer['portal']
-        skins = portal['portal_skins']
-        ruddocom = skins["ruddocom"]
-        assert "cssoverrides.css" in ruddocom.keys()
-        css = portal['portal_css']
-        resources = css.resources
-        assert "cssoverrides.css" in [ r.getId() for r in resources ]
-
-    def test_ckeditor(self):
-        portal = self.layer['portal']
-        props = portal['portal_properties']
-        ckeditor = props["ckeditor_properties"]
-        assert "disabled" == ckeditor.filtering

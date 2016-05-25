@@ -6,46 +6,23 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="ruddocom.policy">
 
-  <includeDependencies package="."/>
+  <include package="plone.app.registry" />
+  <include package="plone.app.contenttypes" />
+  <include package="plone.app.caching" />
+  <include package="plone.app.dexterity" />
+  <include package="plone.app.multilingual" />
+  <include package="plone.app.theming" />
+  <include package="Products.RedirectionTool" />
+  <include package="Products.PloneKeywordManager" />
 
   <genericsetup:importStep
-      name="pre_plone5_upgrade"
-      title="Rudd-O.com prepare Plone 5 upgrade"
-      description="Rudd-O.com prepare Plone 5 upgrade"
-      handler="ruddocom.policy.setupHandlers.cleanupBeforeUpgrade">
-  </genericsetup:importStep>
-
-
-  <genericsetup:importStep
-      name="ruddocom-multilingual"
-      title="Rudd-O.com multilingual setup"
-      description="Enable plone.app.multilingual"
-      handler="ruddocom.policy.setupHandlers.switchToMultilingual">
-      <depends name="languagetool" />
-  </genericsetup:importStep>
-
-  <genericsetup:importStep
-      name="ruddocom-portaltransforms"
-      title="Rudd-O.com site profile portal transforms setup"
-      description="Apply custom portal transforms to  Rudd-O.com"
-      handler="ruddocom.policy.setupHandlers.setupPortalTransforms">
-      <depends name="languagetool" />
-  </genericsetup:importStep>
-
-  <genericsetup:importStep
-      name="ruddocom-languagecontent"
-      title="Rudd-O.com site profile content setup"
-      description="Create and apply settings for Rudd-O.com content"
-      handler="ruddocom.policy.setupHandlers.createContent">
-      <depends name="ruddocom-multilingual" />
-  </genericsetup:importStep>
-
-  <genericsetup:importStep
-      name="ruddocom-cookiesettings"
-      title="Rudd-O.com site cookie settings setup"
-      description="Set login cookie validity of one week"
-      handler="ruddocom.policy.setupHandlers.setupCookies">
-      <depends name="languagetool" />
+      name="ruddocom.policy_default"
+      title="Rudd-O.com site policy default"
+      description=""
+      handler=".setupHandlers.setupAll">
+          <depends name="typeinfo" />
+          <depends name="registry" />
+          <depends name="content" />
   </genericsetup:importStep>
 
   <genericsetup:registerProfile
@@ -56,8 +33,11 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <include file="upgrades.zcml" />
-
-  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+  <genericsetup:importStep
+      name="plone5_upgrade"
+      title="Rudd-O.com Plone 5 upgrade"
+      description="Rudd-O.com Plone 5 upgrade"
+      handler="ruddocom.policy.setupHandlers.upgradeContent">
+  </genericsetup:importStep>
 
 </configure>

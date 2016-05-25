@@ -1,7 +1,0 @@
-[submodule "src/collective.blog.feeds"]
-	path = src/collective.blog.feeds
-	url = https://github.com/Rudd-O/collective.blog.feeds
-[submodule "archetypes.multilingual"]
-	path = src/archetypes.multilingual
-	url = https://github.com/Rudd-O/archetypes.multilingual
-	branch = 2.x

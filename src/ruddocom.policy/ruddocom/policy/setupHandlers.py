@@ -2,8 +2,9 @@
 
 from Products.CMFCore.utils import getToolByName
 from Products.PortalTransforms.Transform import make_config_persistent
-from plone.app.multilingual.browser.setup import SetupMultilingualSite
-from plone.app.multilingual.interfaces import ILanguage
+from Products.CMFPlone.interfaces import ILanguage
+
+default_profile = 'profile-ruddocom.policy:default'
 
 def only_when_I_run(func):
     def importStep(context):
@@ -15,29 +16,9 @@ def only_when_I_run(func):
     return importStep
 
 
-@only_when_I_run
-def setupPortalTransforms(context):
-    tid = 'safe_html'
-
-    pt = getToolByName(context, 'portal_transforms')
-    if not tid in pt.objectIds(): return
-
-    trans = pt[tid]
-
-    permit = ["embed", "object", "style", "iframe"]
-
-    tconfig = trans._config
-    for p in permit:
-        if p in tconfig['nasty_tags']: del tconfig['nasty_tags'][p]
-        if p not in tconfig['valid_tags']: tconfig['valid_tags'][p] = '1'
-
-    make_config_persistent(tconfig)
-    trans._p_changed = True
-    trans.reload()
-
-
-@only_when_I_run
 def createContent(context):
+    logger = context.getLogger('ruddocom.policy')
+    logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
         l.invokeFactory("Folder", "en")
@@ -49,40 +30,37 @@ def createContent(context):
     l['es'].setDescription(u"Linux, software libre, voluntarismo y cypherpunk.  Desde 1999.")
     ILanguage(l['en']).set_language('en')
     ILanguage(l['es']).set_language('es')
+    logger.info("Content created")
 
-@only_when_I_run
 def setupCookies(context):
+    logger = context.getLogger('ruddocom.policy')
+    logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
     l.timeout = 604800
     l.cookie_lifetime = 7
     l.secure = True
+    logger.info("Cookie expiry time set")
+
+def setupAll(context):
+    datafile = context.readDataFile('ruddocom.policy.txt') if hasattr(context, 'readDataFile') else None
+    if datafile is None:
+        # Not your add-on
+        return
+    logger = context.getLogger('ruddocom.policy')
+    logger.info("Beginning setupAll with context %s", context)
+    setupCookies(context)
+    createContent(context)
 
 @only_when_I_run
-def switchToMultilingual(context):
+def upgradeContent(context):
+    ps = getToolByName(context.getSite(), 'portal_setup')
+    try:
+        ps.manage_deleteImportSteps(['ckeditor-uninstall','collective.z3cform.datetimewidget','languagetool'])
+        ps.manage_deleteExportSteps(['languagetool'])
+    except:
+        pass
+    ps.runImportStepFromProfile('profile-plone.app.multilingual:default', 'plone.app.registry')
     qi = getToolByName(context.getSite(), 'portal_quickinstaller')
-    activated = False
-    if not qi.isProductInstalled('plone.app.multilingual'):
-        qi.installProduct('plone.app.multilingual')
-        activated = True
-    if not qi.isProductInstalled('archetypes.multilingual'):
-        qi.installProduct('archetypes.multilingual')
-        activated = True
-    if qi.isProductInstalled('LinguaPlone'):
-        qi.uninstallProducts(['LinguaPlone'])
-    pl = getToolByName(context.getSite(), 'portal_languages')
-    pl.default_language = "en"
-    pl.supported_langs = ['en', 'es']
-    pl.use_cookie_negotiation = False
-    pl.use_subdomain_negotiation = True
-    if activated:
-        s = SetupMultilingualSite(context=context.getSite())
-        s.setupSite(context.getSite())
-
-@only_when_I_run
-def cleanupBeforeUpgrade(context):
-    logger.info("Starting cleanupBeforeUpgrade")
-    qi = getToolByName(context.getSite(), 'portal_quickinstaller')
-    qi.uninstallProducts(['collective.ckeditor', 'collective.plonefinder', 'collective.quickupload', 'collective.searchandreplace'])
-    catalog = getToolByName(context.getSite(), 'portal_catalog')
-    catalog.refreshCatalog(clear=1)
-    logger.info("cleanupBeforeUpgrade finished")
+    qi.reinstallProducts(['PloneKeywordManager','RedirectionTool'])
+    qi.installProducts(['plone.app.contenttypes'])
+    qi.reinstallProducts(['plone.app.multilingual'])
