@@ -555,4 +555,75 @@
       <element key="plone.content.file">plone.app.caching.moderateCaching</element>
     </value>
   </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.contentTypeRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="contentTypeRulesetMapping">
+    <field type="plone.registry.field.Dict">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Maps content type names to ruleset names</description>
+      <key_type type="plone.registry.field.ASCIILine">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content type name</title>
+      </key_type>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content type/ruleset mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Ruleset name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="Folder">plone.content.folderView</element>
+      <element key="LIF">plone.content.folderView</element>
+      <element key="Collection">plone.content.folderView</element>
+      <element key="LRF">plone.content.folderView</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>900</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.feed.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.anonOnly">
+    <field ref="plone.app.caching.moderateCaching.anonOnly"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.etags">
+    <field ref="plone.app.caching.moderateCaching.etags"/>
+    <value>
+      <element>catalogCounter</element>
+      <element>locked</element>
+      <element>roles</element>
+      <element>resourceRegistries</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.lastModified">
+    <field ref="plone.app.caching.moderateCaching.lastModified"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.ramCache">
+    <field ref="plone.app.caching.moderateCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.smaxage">
+    <field ref="plone.app.caching.moderateCaching.smaxage"/>
+    <value>86400</value>
+  </record>
+  <record name="plone.app.caching.moderateCaching.plone.content.folderView.vary">
+    <field ref="plone.app.caching.moderateCaching.vary"/>
+    <value/>
+  </record>
 </registry>
