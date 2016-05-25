@@ -390,4 +390,80 @@
     </field>
     <value>True</value>
   </record>
+  <record name="plone.custom_tags" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="custom_tags">
+    <field type="plone.registry.field.List">
+      <default/>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Add tag names here for tags which are not part of XHTML but which should be permitted.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Custom tags</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>iframe</element>
+    </value>
+  </record>
+  <record name="plone.portal_timezone" interface="Products.CMFPlone.interfaces.controlpanel.IDateAndTimeSchema" field="portal_timezone">
+    <field type="plone.registry.field.Choice">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_portal_timezone">The timezone setting of the portal. Users can set their own timezone, if available timezones are defined.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Portal default timezone</title>
+      <vocabulary>plone.app.vocabularies.CommonTimezones</vocabulary>
+    </field>
+    <value>America/Guayaquil</value>
+  </record>
+  <record name="plone.first_weekday" interface="Products.CMFPlone.interfaces.controlpanel.IDateAndTimeSchema" field="first_weekday">
+    <field type="plone.registry.field.Choice">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_first_weekday">First day in the week.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_first_weekday">First weekday</title>
+      <vocabulary>plone.app.vocabularies.Weekdays</vocabulary>
+    </field>
+    <value>6</value>
+  </record>
+  <record name="plone.nasty_tags" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="nasty_tags">
+    <field type="plone.registry.field.List">
+      <default>
+        <element>style</element>
+        <element>object</element>
+        <element>embed</element>
+        <element>applet</element>
+        <element>script</element>
+        <element>meta</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">These tags, and their content are completely blocked when a page is saved or rendered.</description>
+      <missing_value/>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Nasty tags</title>
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>style</element>
+      <element>applet</element>
+      <element>script</element>
+      <element>meta</element>
+    </value>
+  </record>
+  <record name="plone.smtp_host" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="smtp_host">
+    <field type="plone.registry.field.TextLine">
+      <default>localhost</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_server">The address of your local SMTP (outgoing e-mail) server. Usually 'localhost', unless you use an external server to send e-mail.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_server">SMTP server</title>
+    </field>
+    <value>10.252.104.130</value>
+  </record>
+  <record name="plone.smtp_port" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="smtp_port">
+    <field type="plone.registry.field.Int">
+      <default>25</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_port">The port of your local SMTP (outgoing e-mail) server. Usually '25'.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_port">SMTP port</title>
+    </field>
+    <value>587</value>
+  </record>
+  <record name="plone.smtp_userid" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="smtp_userid">
+    <field type="plone.registry.field.TextLine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_userid">Username for authentication to your e-mail server. Not required unless you are using ESMTP.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_userid">ESMTP username</title>
+    </field>
+    <value>lucy</value>
+  </record>
 </registry>
