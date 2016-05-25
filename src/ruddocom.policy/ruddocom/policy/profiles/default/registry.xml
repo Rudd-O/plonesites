@@ -466,4 +466,93 @@
     </field>
     <value>lucy</value>
   </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.purgedContentTypes" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="purgedContentTypes">
+    <field type="plone.registry.field.Tuple">
+      <default>
+        <element>File</element>
+        <element>Image</element>
+        <element>News Item</element>
+      </default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">List content types which should be purged when modified</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content types to purge</title>
+      <value_type type="plone.registry.field.ASCIILine">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content type name</title>
+      </value_type>
+    </field>
+    <value>
+      <element>Collection</element>
+      <element>File</element>
+      <element>Folder</element>
+      <element>Image</element>
+      <element>LIF</element>
+      <element>LRF</element>
+      <element>Link</element>
+      <element>News Item</element>
+      <element>Document</element>
+      <element>picture</element>
+    </value>
+  </record>
+  <record name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="templateRulesetMapping">
+    <field type="plone.registry.field.Dict">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Maps skin layer page template names to ruleset names</description>
+      <key_type type="plone.registry.field.ASCIILine">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Page template name</title>
+      </key_type>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Page template/ruleset mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Ruleset name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="accessibility-info">plone.content.itemView</element>
+      <element key="image_view_fullscreen">plone.content.itemView</element>
+      <element key="rss.xml">plone.content.feed</element>
+      <element key="image_view">plone.content.itemView</element>
+      <element key="atom.xml">plone.content.feed</element>
+      <element key="itunes.xml">plone.content.feed</element>
+      <element key="search_rss">plone.content.feed</element>
+      <element key="file_view">plone.content.itemView</element>
+      <element key="sitemap">plone.content.itemView</element>
+      <element key="RSS">plone.content.feed</element>
+    </value>
+  </record>
+  <record name="plone.cachepurging.interfaces.ICachePurgingSettings.cachingProxies" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="cachingProxies">
+    <field type="plone.registry.field.Tuple">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.cachepurging" ns0:translate="">Provide the URLs of each proxy to which PURGE requests shoudl be sent.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.cachepurging" ns0:translate="">Caching proxies</title>
+      <value_type type="plone.registry.field.URI"/>
+    </field>
+    <value>
+      <element>http://localhost:80/rudd-o.com</element>
+      <element>http://localhost:80/es.rudd-o.com</element>
+    </value>
+  </record>
+  <record name="plone.caching.interfaces.ICacheSettings.enabled" interface="plone.caching.interfaces.ICacheSettings" field="enabled">
+    <field type="plone.registry.field.Bool">
+      <default>False</default>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">If not set, no caching operations will be attempted</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">Globally enabled</title>
+    </field>
+    <value>True</value>
+  </record>
+  <record name="plone.caching.interfaces.ICacheSettings.operationMapping" interface="plone.caching.interfaces.ICacheSettings" field="operationMapping">
+    <field type="plone.registry.field.Dict">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">Maps rule set names to operation names</description>
+      <key_type type="plone.registry.field.DottedName">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">Rule set name</title>
+      </key_type>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">Rule set/operation mapping</title>
+      <value_type type="plone.registry.field.DottedName">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.caching" ns0:translate="">Caching operation name</title>
+      </value_type>
+    </field>
+    <value>
+      <element key="plone.resource">plone.app.caching.strongCaching</element>
+      <element key="plone.stableResource">plone.app.caching.strongCaching</element>
+      <element key="plone.content.itemView">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.feed">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.folderView">plone.app.caching.moderateCaching</element>
+      <element key="plone.content.file">plone.app.caching.moderateCaching</element>
+    </value>
+  </record>
 </registry>
