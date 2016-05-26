@@ -626,4 +626,32 @@
     <field ref="plone.app.caching.moderateCaching.vary"/>
     <value/>
   </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.anonOnly">
+    <field ref="plone.app.caching.strongCaching.anonOnly"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.etags">
+    <field ref="plone.app.caching.strongCaching.etags"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.lastModified">
+    <field ref="plone.app.caching.strongCaching.lastModified"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.maxage">
+    <field ref="plone.app.caching.strongCaching.maxage"/>
+    <value>2592000</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.ramCache">
+    <field ref="plone.app.caching.strongCaching.ramCache"/>
+    <value>False</value>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.smaxage">
+    <field ref="plone.app.caching.strongCaching.smaxage"/>
+    <value/>
+  </record>
+  <record name="plone.app.caching.strongCaching.plone.stableResource.vary">
+    <field ref="plone.app.caching.strongCaching.vary"/>
+    <value/>
+  </record>
 </registry>
