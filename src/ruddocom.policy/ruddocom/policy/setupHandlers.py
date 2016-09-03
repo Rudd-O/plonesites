@@ -8,6 +8,9 @@ default_profile = 'profile-ruddocom.policy:default'
 
 def only_when_I_run(func):
     def importStep(context):
+        if not hasattr(context, 'readDataFile'):
+            # Not your add-on
+            return
         if context.readDataFile('ruddocom.policy.txt') is None:
             # Not your add-on
             return
@@ -41,15 +44,13 @@ def setupCookies(context):
     l.secure = True
     logger.info("Cookie expiry time set")
 
+@only_when_I_run
 def setupAll(context):
-    datafile = context.readDataFile('ruddocom.policy.txt') if hasattr(context, 'readDataFile') else None
-    if datafile is None:
-        # Not your add-on
-        return
     logger = context.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
     setupCookies(context)
     createContent(context)
+    logger.info("Ended setupAll with context %s", context)
 
 @only_when_I_run
 def upgradeContent(context):
