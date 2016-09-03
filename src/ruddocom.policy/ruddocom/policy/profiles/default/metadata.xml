@@ -10,5 +10,6 @@
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-Products.RedirectionTool:default</dependency>
     <dependency>profile-Products.PloneKeywordManager:default</dependency>
+    <dependency>profile-Products.PloneFormGen:default</dependency>
   </dependencies>
 </metadata>
