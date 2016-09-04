@@ -6,14 +6,17 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="ruddocom.policy">
 
+  <!-- Keep me in sync with profiles/default/metadata.xml and installProducts() -->
   <include package="plone.app.registry" />
   <include package="plone.app.contenttypes" />
   <include package="plone.app.caching" />
   <include package="plone.app.dexterity" />
   <include package="plone.app.multilingual" />
   <include package="plone.app.theming" />
+  <include package="plone.session" />
   <include package="Products.RedirectionTool" />
   <include package="Products.PloneKeywordManager" />
+  <include package="Products.PloneFormGen" />
 
   <genericsetup:importStep
       name="ruddocom.policy_default"
@@ -24,6 +27,16 @@
           <depends name="content" />
   </genericsetup:importStep>
 
+  <genericsetup:upgradeStep
+      title="Rerun setupAll"
+      description="Apply idempotent configuration imports"
+      source="*"
+      destination="15"
+      handler=".setupHandlers.setupAll"
+      sortkey="1"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="default"
       title="Rudd-O.com site policy"
@@ -31,12 +44,5 @@
       description="Turn a site into Rudd-O.com"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-
-  <genericsetup:importStep
-      name="plone5_upgrade"
-      title="Rudd-O.com Plone 5 upgrade"
-      description="Rudd-O.com Plone 5 upgrade"
-      handler="ruddocom.policy.setupHandlers.upgradeContent">
-  </genericsetup:importStep>
 
 </configure>

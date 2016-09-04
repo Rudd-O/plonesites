@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import os
+import logging
 import transaction
 import sys
 
 from Products.CMFPlone.Portal import PloneSite
+
 
 productstoupgrade = sys.argv[3:]
 

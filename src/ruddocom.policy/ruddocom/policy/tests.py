@@ -15,55 +15,38 @@ class TestSetup(unittest.TestCase):
 
     layer = RUDDOCOM_POLICY_INTEGRATION_TESTING
 
-    def test_portal_title(self):
-        portal = self.layer['portal']
-        self.assertEqual(
-                         "Rudd-O.com",
-                         portal.getProperty('site_title')
-                         )
+    def test_portal_properties(self):
+        reg = getUtility(IRegistry)
+        for k, v in [
+            ("site_title", "Rudd-O.com"),
+            ("email_from_address", "webmaster@rudd-o.com"),
+            ("email_from_name", "Webmaster at Rudd-O.com"),
+        ]:
+            self.assertEqual(v, reg[k])
 
-    def test_portal_email(self):
-        portal = self.layer['portal']
-        self.assertEqual(
-                         "webmaster@rudd-o.com",
-                         portal.getProperty('email_from_address')
-        )
-        self.assertEqual(
-                         "Webmaster at Rudd-O.com",
-                         portal.getProperty('email_from_name')
-        )
-
-    def test_PloneKeywordManager_installed(self):
+    def test_Products_installed(self):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('PloneKeywordManager'))
-
-    def test_ploneappcaching_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('plone.app.caching'))
-
-    def test_multilingual_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('plone.app.multilingual'))
-
-    def test_redirectiontool_installed(self):
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
-        self.assertTrue(qi.isProductInstalled('RedirectionTool'))
+        for p in [
+            "PloneKeywordManager",
+            "plone.app.caching",
+            "plone.app.multilingual",
+            "RedirectionTool",
+            "PloneFormGen",
+        ]:
+            self.assertTrue(qi.isProductInstalled(p),
+                            "%s is not installed"%p)
 
     def test_linguaplone_settings_correct(self):
-        portal = self.layer['portal']
-        setSite(portal)
+        reg = getUtility(IRegistry)
         def f(x):
-            return api.portal.get_registry_record(x)
+            return reg[x]
         self.assertEquals(f('plone.available_languages'), ['en', 'es'])
         self.assertEquals(f('plone.use_cctld_negotiation'), False)
         self.assertEquals(f('plone.use_combined_language_codes'), False)
         self.assertEquals(f('plone.use_content_negotiation'), True)
         self.assertEquals(f('plone.use_cookie_negotiation'), False)
-        self.assertEquals(f('plone.use_path_negotiation'), False)
+        self.assertEquals(f('plone.use_path_negotiation'), True)
         self.assertEquals(f('plone.use_request_negotiation'), False)
         self.assertEquals(f('plone.use_subdomain_negotiation'), True)
 
@@ -81,13 +64,8 @@ class TestSetup(unittest.TestCase):
 
     def test_portal_structure(self):
         portal = self.layer['portal']
-        setSite(portal)
-        l = portal['en']
-        self.assertEquals(l.title, u'Rudd-O.com in English')
-        self.assertEquals(plone.api.portal.get_current_language(l), 'en')
-        l = portal['es']
-        self.assertEquals(l.title, u'Rudd-O.com en español')
-        self.assertEquals(plone.api.portal.get_current_language(l), 'es')
+        self.assertEquals(portal['en'].title, u'Rudd-O.com in English')
+        self.assertEquals(portal['es'].title, u'Rudd-O.com en español')
 
     def test_cookies(self):
         portal = self.layer['portal']
