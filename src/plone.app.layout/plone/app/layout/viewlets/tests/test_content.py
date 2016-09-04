@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from DateTime import DateTime
 from plone.app.layout.viewlets.content import ContentRelatedItems
 from plone.app.layout.viewlets.content import DocumentBylineViewlet
@@ -11,6 +12,7 @@ from z3c.relationfield import RelationValue
 from zope.component import getUtility
 from zope.interface import Interface
 from zope.intid.interfaces import IIntIds
+
 
 try:
     import pkg_resources
@@ -31,6 +33,7 @@ class TestDocumentBylineViewletView(ViewletsTestCase):
     """
     Test the document by line viewlet
     """
+
     def afterSetUp(self):
         self.folder.invokeFactory('Document', 'doc1', title='Document 1')
         self.context = self.folder['doc1']
@@ -46,23 +49,6 @@ class TestDocumentBylineViewletView(ViewletsTestCase):
         viewlet = DocumentBylineViewlet(self.context, request, None, None)
         viewlet.update()
         return viewlet
-
-    def test_anonymous_locked_icon(self):
-        viewlet = self._get_viewlet()
-        ILockable(self.context).lock()
-        self.logout()
-        viewlet = self._get_viewlet()
-        self.assertEqual(viewlet.locked_icon(), '')
-
-    def test_locked_icon(self):
-        viewlet = self._get_viewlet()
-        self.assertEqual(viewlet.locked_icon(), "")
-        ILockable(self.context).lock()
-        lockIconUrl = (
-            '<img src="http://nohost/plone/lock_icon.png" alt="" '
-            'title="Locked" height="16" width="16" />'
-        )
-        self.assertEqual(viewlet.locked_icon(), lockIconUrl)
 
     def test_pub_date(self):
         # configure our portal to enable publication date on pages globally on
@@ -96,6 +82,7 @@ class TestHistoryBylineViewletView(ViewletsTestCase):
     """
     Test the document by line viewlet
     """
+
     def afterSetUp(self):
         self.folder.invokeFactory('Document', 'doc1', title='Document 1')
         self.context = self.folder['doc1']

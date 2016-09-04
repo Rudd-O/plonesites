@@ -1,13 +1,40 @@
 Changelog
 =========
 
+2.6.1 (2016-06-07)
+------------------
+
+Bug fixes:
+
+- Document byline viewlet is now displayed only to anonymous users if permited by the `Allow anyone to view 'about' information` option in the `Security Settings` of `Site Setup` (closes `CMFPlone#1556`_).
+  Code used to show the lock status and history view was removed from the document byline as this information was not available to anonymous users anyway.
+  [hvelarde]
+
+
+2.6.0 (2016-05-10)
+------------------
+
+Incompatibilities:
+
+- Deprecated ``plone.app.layout.globals.pattern_settings``.
+  Moved view to ``Products.CMFPlone.patterns.view``.
+  Deprecated also pointless interface for this view.
+  Addresses https://github.com/plone/Products.CMFPlone/issues/1513 and goes together with https://github.com/plone/Products.CMFPlone/issues/1514.
+  [jensens]
+
+Fixes:
+
+- Fix body class ``pat-markspeciallinks`` not set.
+  Fixes #84.
+  [thet]
+
 2.5.19 (2016-03-31)
 -------------------
 
 New:
 
-- Construct the site logo URL to be rooted at ISite instances returned by 
-  ``zope.component.hooks.getSite`` and not only rooted at portal root. 
+- Construct the site logo URL to be rooted at ISite instances returned by
+  ``zope.component.hooks.getSite`` and not only rooted at portal root.
   This makes it possible to have sub sites with local registries which return
   a different logo.
   [thet]
@@ -1687,3 +1714,4 @@ Fixes:
 .. _`CMFPlone#1037`: https://github.com/plone/Products.CMFPlone/issues/1037
 .. _`CMFPlone#1151`: https://github.com/plone/Products.CMFPlone/issues/1151
 .. _`CMFPlone#1178`: https://github.com/plone/Products.CMFPlone/issues/1178
+.. _`CMFPlone#1556`: https://github.com/plone/Products.CMFPlone/issues/1556
