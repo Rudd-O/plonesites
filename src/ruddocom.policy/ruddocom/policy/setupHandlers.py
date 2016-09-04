@@ -5,6 +5,7 @@ from Products.PortalTransforms.Transform import make_config_persistent
 from Products.CMFPlone.interfaces import ILanguage
 
 default_profile = 'profile-ruddocom.policy:default'
+logger = context.getLogger('ruddocom.policy')
 
 def only_when_I_run(func):
     def importStep(context):
@@ -24,7 +25,6 @@ def only_when_I_run(func):
 
 
 def createContent(context):
-    logger = context.getLogger('ruddocom.policy')
     logger.info("Creating content")
     l = context.getSite()
     if "en" not in l:
@@ -40,7 +40,6 @@ def createContent(context):
     logger.info("Content created")
 
 def setupCookies(context):
-    logger = context.getLogger('ruddocom.policy')
     logger.info("Setting cookie expiry time")
     l = context.getSite().acl_users.session
     l.timeout = 604800
@@ -50,7 +49,6 @@ def setupCookies(context):
 
 @only_when_I_run
 def setupAll(context):
-    logger = context.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
     setupCookies(context)
     createContent(context)
