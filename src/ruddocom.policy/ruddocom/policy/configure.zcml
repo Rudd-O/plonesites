@@ -21,7 +21,6 @@
       description=""
       handler=".setupHandlers.setupAll">
           <depends name="typeinfo" />
-          <depends name="registry" />
           <depends name="content" />
   </genericsetup:importStep>
 
