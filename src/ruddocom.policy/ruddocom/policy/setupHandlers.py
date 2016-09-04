@@ -8,12 +8,16 @@ default_profile = 'profile-ruddocom.policy:default'
 
 def only_when_I_run(func):
     def importStep(context):
+        logger.info("Checking whether I get to run")
         if not hasattr(context, 'readDataFile'):
+            logger.info("No readDataFile in context")
             # Not your add-on
             return
         if context.readDataFile('ruddocom.policy.txt') is None:
+            logger.info("Nothing in file ruddocom.policy.txt")
             # Not your add-on
             return
+        logger.info("Executing %s", func)
         return func(context)
     importStep.func_name = func.func_name
     return importStep
