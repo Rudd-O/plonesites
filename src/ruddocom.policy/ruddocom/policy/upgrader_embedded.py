@@ -58,3 +58,5 @@ if commit:
         t = transaction.get()
         t.note(changed)
         t.commit()
+if changed:
+    print "Upgraded: yes.  %s" % changed
