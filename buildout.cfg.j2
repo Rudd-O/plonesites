@@ -76,7 +76,7 @@ deployment-dir = /srv/plone/{{ item }}
 # If you try to start Zope as root, it will change user id to run as
 # the effective user specified here. This user id must own the var directory
 # of your buildout.
-effective-user = plone
+effective-user = {{ process_user }}
 
 
 ############################################
