@@ -21,6 +21,9 @@ class RuddocomPolicy(PloneSandboxLayer):
         )
 
     def setUpPloneSite(self, portal):
+        logger = logging.getLogger()
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
         applyProfile(portal, 'ruddocom.policy:default')
 
 RUDDOCOM_POLICY_FIXTURE = RuddocomPolicy()
@@ -33,6 +36,3 @@ RUDDOCOM_POLICY_INTEGRATION_TESTING = IntegrationTesting(
 handler = logging.StreamHandler(sys.stderr)
 formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s")
 handler.setFormatter(formatter)
-logger = logging.getLogger("GenericSetup.ruddocom.policy")
-logger.addHandler(handler)
-logger.setLevel(logging.INFO)
