@@ -2,7 +2,7 @@
 <metadata>
   <version>15</version>
   <dependencies>
-    <!-- Keep me in sync with configure.xml includes and installProducts() -->
+    <!-- Keep me in sync with configure.xml includes, tests.py and installOldStyleProducts() -->
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-plone.app.contenttypes:default</dependency>
     <dependency>profile-plone.app.caching:default</dependency>
@@ -10,8 +10,5 @@
     <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-plone.session:default</dependency>
-    <dependency>profile-Products.RedirectionTool:default</dependency>
-    <dependency>profile-Products.PloneKeywordManager:default</dependency>
-    <dependency>profile-Products.PloneFormGen:default</dependency>
   </dependencies>
 </metadata>

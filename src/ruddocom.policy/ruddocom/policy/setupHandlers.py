@@ -26,28 +26,34 @@ def only_when_I_run(func):
     return importStep
 
 
-def installProducts(context):
+def installOldStyleProducts(context):
+    # Keep me in sync with configure.xml, tests.py and profiles/default/metadata.xml
+    # The dependencies mechanism of metadata.xml does not install
+    # old-style products properly.  It registers them with the
+    # "wrong" name in the quickinstaller (no Products. prefix)
+    # so they do not appear as installed in the Plone add-ons view.
+    # Thus, we must install them "by hand" here.
+    # FIXME: we should upgrade products that have been upgraded on
+    # the file system.  That is what metadata.xml does for all
+    # listed products there.
     logger = context.getLogger('ruddocom.policy')
-    logger.info("Installing products")
+    logger.info("Installing old-style products")
     qi = getToolByName(context.getSite(), 'portal_quickinstaller')
-    # Keep me in sync with configure.xml and profiles/default/metadata.xml
     products = [
-        'plone.app.contenttypes',
-        'plone.app.multilingual',
-        'plone.app.caching',
-        'PloneKeywordManager',
-        'RedirectionTool',
-        'PloneFormGen',
+        'Products.RedirectionTool',
+        'Products.PloneKeywordManager',
+        'Products.PloneFormGen',
     ]
     installed = [x['id'] for x in qi.listInstalledProducts()]
-    logger.info("Already installed: %s", ", ".join(installed))
+    logger.info("All installed: %s", ", ".join(installed))
+    logger.info("Already installed: %s", ", ".join(set(installed) & set(products)))
     for p in products:
         if p not in installed:
             logger.info("Installing %s", p)
-            qi.installProducts([p])
+            qi.installProduct(p)
     installed = [x['id'] for x in qi.listInstalledProducts()]
-    logger.info("Now installed: %s", ", ".join(installed))
-    logger.info("Products installed")
+    logger.info("Now installed: %s", ", ".join(set(installed) & set(products)))
+    logger.info("Old-style products installed")
 
 
 def setupLanguage(context):
@@ -114,7 +120,7 @@ def setupAll(context):
     logger = context.getLogger('ruddocom.policy')
     logger.info("Beginning setupAll with context %s", context)
     setupCookies(context)
-    installProducts(context)
+    installOldStyleProducts(context)
     setupLanguage(context)
     setupLanguageSelector(context)
     setupRegistryProperties(context)

@@ -28,11 +28,11 @@ class TestSetup(unittest.TestCase):
         portal = self.layer['portal']
         qi = getattr(portal, 'portal_quickinstaller')
         for p in [
-            "PloneKeywordManager",
-            "plone.app.caching",
+            # Keep me in sync with installOldStyleProducts
             "plone.app.multilingual",
-            "RedirectionTool",
-            "PloneFormGen",
+            "Products.PloneKeywordManager",
+            "Products.RedirectionTool",
+            "Products.PloneFormGen",
         ]:
             self.assertTrue(qi.isProductInstalled(p),
                             "%s is not installed"%p)

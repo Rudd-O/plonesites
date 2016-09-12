@@ -6,7 +6,7 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="ruddocom.policy">
 
-  <!-- Keep me in sync with profiles/default/metadata.xml and installProducts() -->
+  <!-- Keep me in sync with profiles/default/metadata.xml, tests.py and installOldStyleProducts() -->
   <include package="plone.app.registry" />
   <include package="plone.app.contenttypes" />
   <include package="plone.app.caching" />
