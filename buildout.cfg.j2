@@ -55,13 +55,13 @@ data-dir = ${buildout:data-basedir}/{{ item }}
 
 extends = 
     base.cfg
-    https://dist.plone.org/release/5.0.5/versions.cfg
+    https://dist.plone.org/release/5.0.6/versions.cfg
     versions.cfg
 
 # If you change your Plone version, you'll also need to update
 # the repository below.
 find-links +=
-    https://dist.plone.org/release/5.0.5/
+    https://dist.plone.org/release/5.0.6/
 
 ############################################
 # Ports
@@ -100,6 +100,7 @@ eggs =
     Products.DocFinderTab
     plone.app.multilingual
     wildcard.fixpersistentutilities
+    Products.PloneHotfix20160830
 #   DEVELOP-EGG VERSIONS
     plone.app.layout
     ruddocom.policy [test]
