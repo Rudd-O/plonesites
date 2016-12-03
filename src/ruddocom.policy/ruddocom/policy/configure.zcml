@@ -19,7 +19,7 @@
   <include package="Products.PloneFormGen" />
 
   <genericsetup:importStep
-      name="ruddocom.policy_default"
+      name="ruddocom.policy:default"
       title="Rudd-O.com site policy default"
       description=""
       handler=".setupHandlers.setupAll">
