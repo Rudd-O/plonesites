@@ -6,6 +6,7 @@ import transaction
 import sys
 
 from Products.CMFPlone.Portal import PloneSite
+from zope.component.hooks import setSite
 
 
 productstoupgrade = sys.argv[3:]
@@ -32,7 +33,11 @@ for p in productstoupgrade:
 
 changed = ""
 
+olda = None
 for a in (s for s in app.values() if isinstance(s, PloneSite)):
+    if olda != a:
+        setSite(a)
+        olda = a
     ip = dict((x['id'], x) for x in a.portal_quickinstaller.listInstalledProducts())
     for i, data in ip.items():
         if i not in productstoupgrade: continue
