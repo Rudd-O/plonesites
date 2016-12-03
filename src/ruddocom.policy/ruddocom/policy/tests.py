@@ -33,6 +33,7 @@ class TestSetup(unittest.TestCase):
             "Products.PloneKeywordManager",
             "Products.RedirectionTool",
             "Products.PloneFormGen",
+            'plonetheme.clean_blog',
         ]:
             self.assertTrue(qi.isProductInstalled(p),
                             "%s is not installed"%p)

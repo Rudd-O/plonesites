@@ -17,6 +17,7 @@
   <include package="Products.RedirectionTool" />
   <include package="Products.PloneKeywordManager" />
   <include package="Products.PloneFormGen" />
+  <include package="plonetheme.clean_blog" />
 
   <genericsetup:importStep
       name="ruddocom.policy:default"
@@ -36,6 +37,15 @@
       sortkey="1"
       profile="ruddocom.policy:default"
       />
+
+<genericsetup:upgradeDepends
+    source="15"
+    destination="16"
+    profile="ruddocom.policy:default"
+    title="Apply profile for theme"
+    sortkey="2"
+    import_profile="plonetheme.clean_blog:default"
+    />
 
   <genericsetup:registerProfile
       name="default"
