@@ -346,6 +346,14 @@
     </field>
     <value>True</value>
   </record>
+  <record name="plone.custom_attributes" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="custom_attributes">
+    <field type="plone.registry.field.List">
+      <value_type type="plone.registry.field.TextLine"/>
+    </field>
+    <value>
+      <element>style</element>
+    </value>
+  </record>
   <record name="plone.custom_tags" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="custom_tags">
     <field type="plone.registry.field.List">
       <default/>
