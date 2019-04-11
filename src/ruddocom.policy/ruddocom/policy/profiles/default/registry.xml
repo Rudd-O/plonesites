@@ -352,6 +352,7 @@
     </field>
     <value>
       <element>style</element>
+      <element>controls</element>
     </value>
   </record>
   <record name="plone.custom_tags" interface="Products.CMFPlone.interfaces.controlpanel.IFilterSchema" field="custom_tags">
