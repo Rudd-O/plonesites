@@ -321,7 +321,10 @@
       <required>False</required>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">JavaScript for web statistics support</title>
     </field>
-    <value>&lt;script type="text/javascript"&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();&lt;/script&gt;</value>
+<!-- disabling the following 
+    <value>&lt;script type="text/javascript"&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  }());&lt;/script&gt;</value>
+-->
+    <value>&lt;script type="text/javascript"&gt;  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-1203268-1']);  _gaq.push(['_setDomainName', 'rudd-o.com']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  });&lt;/script&gt;</value>
   </record>
   <record name="plone.email_from_address" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_address">
     <field type="plone.registry.field.ASCIILine">
