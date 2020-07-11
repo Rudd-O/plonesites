@@ -55,13 +55,13 @@ data-dir = ${buildout:data-basedir}/{{ item }}
 
 extends = 
     base.cfg
-    https://dist.plone.org/release/5.1.4/versions.cfg
+    https://dist.plone.org/release/{{ plone.version }}/versions.cfg
     versions.cfg
 
 # If you change your Plone version, you'll also need to update
 # the repository below.
 find-links +=
-    https://dist.plone.org/release/5.1.4/
+    https://dist.plone.org/release/{{ plone.version }}/
 
 index = https://pypi.python.org/simple/
 
@@ -76,6 +76,8 @@ zeo-address = ${buildout:data-dir}/var/zeosocket
 http-address = {{ plone.deployments[item].zserver_address }}
 # Additional clients:
 debugger-address = {{ plone.deployments[item].debugger_address }}
+
+zserver-threads = {{ plone.threads }}
 
 # temporarily disabling the
 # site-id = Rudd-O.com
