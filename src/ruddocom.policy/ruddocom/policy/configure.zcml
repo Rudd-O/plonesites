@@ -11,10 +11,8 @@
   <include package="plone.app.contenttypes" />
   <include package="plone.app.caching" />
   <include package="plone.app.dexterity" />
-  <include package="plone.app.multilingual" />
   <include package="plone.app.theming" />
   <include package="plone.session" />
-  <include package="Products.PloneKeywordManager" />
   <include package="Products.PloneFormGen" />
 
   <genericsetup:importStep
