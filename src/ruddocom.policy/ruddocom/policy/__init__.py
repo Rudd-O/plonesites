@@ -1,5 +1,7 @@
 # -*- extra stuff goes here -*-
 
+import ruddocom.policy.workarounds
+
 # monkey patches
 
 from Products.CMFCore.utils import getToolByName
