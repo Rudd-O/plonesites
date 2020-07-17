@@ -144,6 +144,22 @@ except ImportError:
 
 
 try:
+    from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
+except ImportError:
+    from Persistence import Persistent
+
+    class DiscussionItemContainer(Persistent):
+        '''blanc used for alias'''
+        pass
+    alias_module(
+        'Products.CMFDefault.DiscussionItem.DiscussionItemContainer',
+        DiscussionItemContainer)
+    LOGGER.warn(
+        "Alias registered for missing: "
+        "Products.CMFDefault.DiscussionItem.DiscussionItemContainer")
+
+
+try:
     # pylint: disable=ungrouped-imports
     from plone.dexterity.schema import SchemaModuleFactory
     from zope.component.hooks import getSiteManager
