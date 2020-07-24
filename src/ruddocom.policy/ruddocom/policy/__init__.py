@@ -1,12 +1,16 @@
 # -*- extra stuff goes here -*-
 
+import ruddocom.policy.workarounds
+
 # monkey patches
 
 from Products.CMFCore.utils import getToolByName
-from plone.app.contenttypes.migration.vocabularies import ATCT_LIST
+# FIXME: disabled.
+# from plone.app.contenttypes.migration.vocabularies import ATCT_LIST
 
 
-from plone.app.contenttypes.migration.browser import ATCTMigratorHelpers
+# FIXME: disabled.
+# from plone.app.contenttypes.migration.browser import ATCTMigratorHelpers
 
 
 def objects_to_be_migrated(self):
@@ -21,12 +25,14 @@ def objects_to_be_migrated(self):
     return self._objects_to_be_migrated
 
 
-ATCTMigratorHelpers.objects_to_be_migrated = objects_to_be_migrated
+# FIXME: disabled.
+# ATCTMigratorHelpers.objects_to_be_migrated = objects_to_be_migrated
 
 
 from plone.locking.interfaces import ILockable
 from OFS.interfaces import IOrderedContainer
-from Products.contentmigration.basemigrator.migrator import BaseMigrator
+# FIXME: disabled.
+# from Products.contentmigration.basemigrator.migrator import BaseMigrator
 
 def migrate(self, unittest=0):
     """Migrates the object
@@ -63,4 +69,5 @@ def migrate(self, unittest=0):
     self.reorder()
     self.remove()
 
-BaseMigrator.migrate = migrate
+# FIXME: disabled.
+# BaseMigrator.migrate = migrate

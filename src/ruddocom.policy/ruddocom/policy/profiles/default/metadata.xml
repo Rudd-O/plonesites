@@ -7,7 +7,6 @@
     <dependency>profile-plone.app.contenttypes:default</dependency>
     <dependency>profile-plone.app.caching:default</dependency>
     <dependency>profile-plone.app.dexterity:default</dependency>
-    <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-plone.session:default</dependency>
   </dependencies>

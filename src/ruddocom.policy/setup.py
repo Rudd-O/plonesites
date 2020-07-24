@@ -27,6 +27,7 @@ setup(name='ruddocom.policy',
       install_requires=[
           'setuptools',
           'Plone',
+          'plone.app.blob',
       ],
       # -*- Extra requirements: -*-
       extras_require={
@@ -41,6 +42,4 @@ setup(name='ruddocom.policy',
       [plone.recipe.zope2instance.ctl]
       upgrade = ruddocom.policy.upgrader:main
       """,
-#      setup_requires=["PasteScript"],
-#      paster_plugins=["ZopeSkel"],
       )

@@ -51,17 +51,17 @@ deployment-basedir = {{ deploymentdir }}
 data-basedir = {{ datadir }}
 
 # Place where this deployment keeps its data.
-data-dir = ${buildout:data-basedir}/{{ item }}
+data-dir = ${buildout:data-basedir}/{{ item.key }}
 
 extends = 
     base.cfg
-    https://dist.plone.org/release/{{ plone.deployments[item].version }}/versions.cfg
+    https://dist.plone.org/release/{{ item.value.version }}/versions.cfg
     versions.cfg
 
 # If you change your Plone version, you'll also need to update
 # the repository below.
 find-links +=
-    https://dist.plone.org/release/{{ plone.deployments[item].version }}/
+    https://dist.plone.org/release/{{ item.value.version }}/
 
 index = https://pypi.python.org/simple/
 
@@ -73,11 +73,11 @@ index = https://pypi.python.org/simple/
 # ZEO Server
 zeo-address = ${buildout:data-dir}/var/zeosocket
 # Zope client 1
-http-address = {{ plone.deployments[item].zserver_address }}
+http-address = {{ item.value.zserver_address }}
 # Additional clients:
-debugger-address = {{ plone.deployments[item].debugger_address }}
+debugger-address = {{ item.value.debugger_address }}
 
-zserver-threads = {{ plone.deployments[item].threads }}
+zserver-threads = {{ item.value.threads }}
 
 # temporarily disabling the
 # site-id = Rudd-O.com
@@ -99,14 +99,12 @@ eggs =
     Pillow
 #   WANTED PRODUCTS versions pinned in versions.cfg
     Products.PloneFormGen
+    Products.ATContentTypes
+    Products.contentmigration
     Products.PloneKeywordManager
-    Products.RedirectionTool
-    Products.DocFinderTab
     plone.app.multilingual
     wildcard.fixpersistentutilities
-    Products.PloneHotfix20160830
-    Products.PloneHotfix20161129
-    Products.PloneHotfix20170117
+    plone.app.changeownership
 #   DEVELOP-EGG VERSIONS
     ruddocom.policy [test]
 
@@ -166,7 +164,7 @@ develop =
 # ----------
 # Change debug-mode to "on" to run in development mode.
 # 
-debug-mode = {{ plone.deployments[item].debug_mode }}
+debug-mode = {{ item.value.debug_mode }}
 # Add-on developers should turn deprecation warnings on
 deprecation-warnings = off
 # change verbose-security to "on" for useful security errors while developing
@@ -232,7 +230,6 @@ parts =
     debugger
     zopepy
     zopeskel
-    unifiedinstaller
     backup
     precompile
     chown-zeo
