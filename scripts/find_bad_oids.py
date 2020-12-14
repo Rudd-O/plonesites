@@ -17,4 +17,4 @@ def error_finder(folder, exception=POSKeyError, stop_on_first=None):
             if hasattr(next_item.aq_base, 'objectItems'):
                 error_finder(next_item, exception, stop_on_first)
 
-error_finder(app.Engr, stop_on_first=False)
+error_finder(app, stop_on_first=False)
