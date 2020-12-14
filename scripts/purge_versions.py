@@ -3,7 +3,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFEditions.utilities import dereference
 
 self = app[sys.argv[-1]].aq_base
-assert 0, self
 
 policy = getToolByName(self.context, 'portal_purgepolicy')
 catalog = getToolByName(self.context, 'portal_catalog')
