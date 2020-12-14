@@ -2,8 +2,7 @@ from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.CMFEditions.utilities import dereference
 
-import sys
-assert 0, sys.argv
+self = app[sys.argv[-1]]
 
 policy = getToolByName(self.context, 'portal_purgepolicy')
 catalog = getToolByName(self.context, 'portal_catalog')
