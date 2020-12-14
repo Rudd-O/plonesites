@@ -56,6 +56,7 @@ data-dir = ${buildout:data-basedir}/{{ item.key }}
 extends = 
     base.cfg
     https://dist.plone.org/release/{{ item.value.version }}/versions.cfg
+    https://raw.githubusercontent.com/plone/plone.app.mosaic/master/versions.cfg
     versions.cfg
 
 # If you change your Plone version, you'll also need to update
@@ -97,8 +98,7 @@ effective-user = {{ process_user }}
 eggs =
     Plone
     Pillow
-#   COMPAT absence broke Plone https://community.plone.org/t/error-on-plone-upgrade-4-5/2416/2
-    plone.app.drafts
+    plone.app.mosaic
 #   WANTED PRODUCTS versions pinned in versions.cfg
     Products.PloneFormGen
     Products.ATContentTypes
