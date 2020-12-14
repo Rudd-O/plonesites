@@ -42,7 +42,7 @@ def installOldStyleProducts(context):
     logger("Installing old-style products")
     qi = getToolByName(context.getSite(), 'portal_quickinstaller')
     products = [
-        'Products.PloneFormGen',
+        # 'Products.PloneFormGen',  # neutered, we do not install this anymore.
     ]
     installed = [x['id'] for x in qi.listInstalledProducts()]
     logger("All installed: %s", ", ".join(installed))

@@ -13,7 +13,6 @@
   <include package="plone.app.dexterity" />
   <include package="plone.app.theming" />
   <include package="plone.session" />
-  <include package="Products.PloneFormGen" />
 
   <genericsetup:importStep
       name="ruddocom.policy:default"
