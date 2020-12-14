@@ -230,12 +230,10 @@ parts =
     debugger
     zopepy
     backup
+    zodbupdate
     precompile
     chown-zeo
 #    temporarily disabling the 
 #    plonesite
 
-[precompile]
-recipe = plone.recipe.precompiler
-eggs = ${buildout:eggs}
-compile-mo-files = true
+auto-checkout += zodbupdate
