@@ -4,6 +4,7 @@ def error_finder(folder, exception=POSKeyError, stop_on_first=None):
     If stop_on_first is true, quit after one exception;
     otherwise, keep going through the whole tree."""
     for id, next_item in folder.objectItems():
+        print("Inspecting %s" % id)
         try:
             next_item.getId()
         except exception:
