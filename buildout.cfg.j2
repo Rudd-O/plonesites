@@ -97,6 +97,8 @@ effective-user = {{ process_user }}
 eggs =
     Plone
     Pillow
+#   COMPAT absence broke Plone https://community.plone.org/t/error-on-plone-upgrade-4-5/2416/2
+    plone.app.drafts
 #   WANTED PRODUCTS versions pinned in versions.cfg
     Products.PloneFormGen
     Products.ATContentTypes
