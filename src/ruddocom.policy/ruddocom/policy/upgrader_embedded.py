@@ -23,7 +23,7 @@ if not productstoupgrade:
     )
 
 installed = dict()
-for a in (s for s in app.values() if isinstance(s, PloneSite)):
+for a in (s for s in list(app.values()) if isinstance(s, PloneSite)):
     ip = dict((x['id'], x) for x in a.portal_quickinstaller.listInstalledProducts())
     installed.update((x, True) for x in ip)
 
@@ -34,22 +34,22 @@ for p in productstoupgrade:
 changed = ""
 
 olda = None
-for a in (s for s in app.values() if isinstance(s, PloneSite)):
+for a in (s for s in list(app.values()) if isinstance(s, PloneSite)):
     if olda != a:
         setSite(a)
         olda = a
     ip = dict((x['id'], x) for x in a.portal_quickinstaller.listInstalledProducts())
-    for i, data in ip.items():
+    for i, data in list(ip.items()):
         if i not in productstoupgrade: continue
         ui = a.portal_quickinstaller.upgradeInfo(i)
         installedVersion, newVersion = ui['installedVersion'], ui['newVersion']
         if installedVersion != newVersion:
-            for k, v in ui.items():
-                print "in: %s: before: %s: %s=%s" % (a.__name__, i, k, v)
+            for k, v in list(ui.items()):
+                print("in: %s: before: %s: %s=%s" % (a.__name__, i, k, v))
             a.portal_quickinstaller.upgradeProduct(i)
             uia = a.portal_quickinstaller.upgradeInfo(i)
-            for k, v in uia.items():
-                print "in: %s: after:  %s: %s=%s" % (a.__name__, i, k, v)
+            for k, v in list(uia.items()):
+                print("in: %s: after:  %s: %s=%s" % (a.__name__, i, k, v))
             if changed == "":
                 changed = "Upgrade: "
             else:
@@ -64,4 +64,4 @@ if commit:
         t.note(changed)
         t.commit()
 if changed:
-    print "Upgraded: yes.  %s" % changed
+    print("Upgraded: yes.  %s" % changed)

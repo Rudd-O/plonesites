@@ -25,7 +25,7 @@ def only_when_I_run(func):
             return
         logger("Executing %s", func)
         return func(context)
-    importStep.func_name = func.func_name
+    importStep.__name__ = func.__name__
     return importStep
 
 

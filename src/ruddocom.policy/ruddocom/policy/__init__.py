@@ -17,7 +17,7 @@ def objects_to_be_migrated(self):
     """ Return the number of AT objects in the portal """
     catalog = getToolByName(self.context, "portal_catalog")
     #import pdb; pdb.set_trace()
-    query = {'meta_type': [i['old_meta_type'] for i in ATCT_LIST.values()]}
+    query = {'meta_type': [i['old_meta_type'] for i in list(ATCT_LIST.values())]}
     #if HAS_MULTILINGUAL and 'Language' in catalog.indexes():
     #    query['Language'] = 'all'
     brains = catalog(query)

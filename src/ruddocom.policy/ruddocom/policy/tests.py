@@ -37,6 +37,6 @@ class TestSetup(unittest.TestCase):
     def test_cookies(self):
         portal = self.layer['portal']
         l = portal['acl_users']['session']
-        self.assertEquals(l.timeout, 604800)
-        self.assertEquals(l.cookie_lifetime, 7)
-        self.assertEquals(l.secure, True)
+        self.assertEqual(l.timeout, 604800)
+        self.assertEqual(l.cookie_lifetime, 7)
+        self.assertEqual(l.secure, True)
