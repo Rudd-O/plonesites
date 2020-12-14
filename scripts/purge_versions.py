@@ -4,8 +4,8 @@ from Products.CMFEditions.utilities import dereference
 
 self = app[sys.argv[-1]].aq_base
 
-policy = getToolByName(self.context, 'portal_purgepolicy')
-catalog = getToolByName(self.context, 'portal_catalog')
+policy = getToolByName(self, 'portal_purgepolicy')
+catalog = getToolByName(self, 'portal_catalog')
 
 for count, brain in enumerate(catalog()):
     obj = brain.getObject()
