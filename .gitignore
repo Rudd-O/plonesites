@@ -8,3 +8,4 @@ buildout.cfg
 .svn
 .installed.cfg
 .settings
+var
