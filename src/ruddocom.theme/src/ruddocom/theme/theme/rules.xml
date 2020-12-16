@@ -31,11 +31,18 @@
   <!-- Copy over the id/class attributes on the body tag. This is important for per-section styling -->
   <copy attributes="*" css:content="body" css:theme="body" />
 
+  <replace css:content-children="#portal-logo">
+    <img id="portal-logo" src="++theme++ruddocom/logo.png" alt="Rudd-O.com"/>
+  </replace>
+
   <!-- move global nav -->
   <replace css:theme-children="#mainnavigation" css:content-children="#portal-mainnavigation" method="raw" />
 
   <!-- full-width breadcrumb -->
   <replace css:content="#viewlet-above-content" css:theme="#above-content" />
+
+  <!-- drop hero -->
+  <drop css:theme="#hero" />
 
   <!-- Central column -->
   <replace css:theme="#content-container" method="raw">
