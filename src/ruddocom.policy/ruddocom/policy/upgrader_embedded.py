@@ -34,11 +34,11 @@ qi = get_installer(site)
 
 for productid in productstoupgrade:
     if qi.is_product_installed(productid):
-        changes.append("Product %s successfully installed on %s." % (productid, siteid))
         qi.upgrade_product(productid)
-    else:
         changes.append("Product %s successfully upgraded on %s." % (productid, siteid))
+    else:
         qi.install_product(productid)
+        changes.append("Product %s successfully installed on %s." % (productid, siteid))
 
 if commit:
     t = transaction.get()
