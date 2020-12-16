@@ -5,5 +5,6 @@
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
 <path>/${PROJECT_DIR_NAME}/src/ruddocom.policy</path>
 <path>/${PROJECT_DIR_NAME}/parts/omelette</path>
+<path>/${PROJECT_DIR_NAME}/src/ruddocom.theme/src</path>
 </pydev_pathproperty>
 </pydev_project>
