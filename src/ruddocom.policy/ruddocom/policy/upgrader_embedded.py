@@ -4,6 +4,7 @@ import sys
 
 from Products.CMFPlone.utils import get_installer
 import transaction
+from zope.component.hooks import setSite
 
 
 productstoupgrade = sys.argv[3:]
@@ -26,7 +27,10 @@ productstoupgrade = productstoupgrade[1:]
 
 changes = []
 
-qi = get_installer(app[siteid])  # pylint:disable=invalid-name,used-before-assignment
+site = app[siteid]  # pylint:disable=invalid-name,used-before-assignment
+setSite(site)
+
+qi = get_installer(site)
 
 for productid in productstoupgrade:
     if not qi.is_product_installed(productid):
