@@ -10,6 +10,7 @@ class HiddenProfiles(object):
         """Hide uninstall profile from site-creation and quickinstaller"""
         return [
             'ruddocom.theme:uninstall',
+            'ruddocom.theme:default',
         ]
 
 
