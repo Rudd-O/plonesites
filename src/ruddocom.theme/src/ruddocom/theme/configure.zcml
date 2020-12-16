@@ -14,7 +14,7 @@
   <plone:static
       directory="theme"
       type="theme"
-      name="rudd-o.com"
+      name="ruddocom"
       />
 
   <genericsetup:registerProfile
