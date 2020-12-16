@@ -14,22 +14,19 @@ class RuddocomPolicy(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load ZCML
         import ruddocom.policy
-        xmlconfig.file(
-            'configure.zcml',
-            ruddocom.policy,
-            context=configurationContext
-        )
+
+        xmlconfig.file("configure.zcml", ruddocom.policy, context=configurationContext)
 
     def setUpPloneSite(self, portal):
         logger = logging.getLogger()
         logger.addHandler(handler)
         logger.setLevel(logging.INFO)
-        applyProfile(portal, 'ruddocom.policy:default')
+        applyProfile(portal, "ruddocom.policy:default")
+
 
 RUDDOCOM_POLICY_FIXTURE = RuddocomPolicy()
 RUDDOCOM_POLICY_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(RUDDOCOM_POLICY_FIXTURE,),
-    name="Rudd-O.com:Integration"
+    bases=(RUDDOCOM_POLICY_FIXTURE,), name="Rudd-O.com:Integration"
 )
 
 

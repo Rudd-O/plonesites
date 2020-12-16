@@ -1,67 +1,35 @@
 #!/usr/bin/env python
 
-import os
-import logging
-import transaction
 import sys
 
-from Products.CMFPlone.Portal import PloneSite
-from zope.component.hooks import setSite
+from Products.CMFPlone.utils import get_installer
+import transaction
 
 
 productstoupgrade = sys.argv[3:]
 
 commit = True
-if productstoupgrade and productstoupgrade[0] == "-n":
+if "-n" in productstoupgrade:
     commit = False
-    productstoupgrade = productstoupgrade[1:]
+    productstoupgrade.remove("-n")
 
 if not productstoupgrade:
     raise Exception(
-        "the product(s) to upgrade must "
-        "be specified after the upgrade subcommand"
+        "the product(s) to upgrade must " "be specified after the upgrade subcommand"
     )
 
-installed = dict()
-for a in (s for s in list(app.values()) if isinstance(s, PloneSite)):
-    ip = dict((x['id'], x) for x in a.portal_quickinstaller.listInstalledProducts())
-    installed.update((x, True) for x in ip)
+if len(productstoupgrade) != 2:
+    raise Exception("the product to upgrade must follow the name (ID) of the site")
 
-for p in productstoupgrade:
-    if p not in installed:
-        raise Exception("Product %s is not installed in any site" % p)
+siteid, productid = productstoupgrade
 
-changed = ""
-
-olda = None
-for a in (s for s in list(app.values()) if isinstance(s, PloneSite)):
-    if olda != a:
-        setSite(a)
-        olda = a
-    ip = dict((x['id'], x) for x in a.portal_quickinstaller.listInstalledProducts())
-    for i, data in list(ip.items()):
-        if i not in productstoupgrade: continue
-        ui = a.portal_quickinstaller.upgradeInfo(i)
-        installedVersion, newVersion = ui['installedVersion'], ui['newVersion']
-        if installedVersion != newVersion:
-            for k, v in list(ui.items()):
-                print("in: %s: before: %s: %s=%s" % (a.__name__, i, k, v))
-            a.portal_quickinstaller.upgradeProduct(i)
-            uia = a.portal_quickinstaller.upgradeInfo(i)
-            for k, v in list(uia.items()):
-                print("in: %s: after:  %s: %s=%s" % (a.__name__, i, k, v))
-            if changed == "":
-                changed = "Upgrade: "
-            else:
-                changed = changed + ", "
-            changed = changed + "%s from %s to %s" % (
-                a.__name__, installedVersion, newVersion
-            )
+qi = get_installer(app[siteid])  # pylint:disable=invalid-name,used-before-assignment
+qi.upgrade_product(productid)
 
 if commit:
-    if changed:
-        t = transaction.get()
-        t.note(changed)
-        t.commit()
-if changed:
-    print("Upgraded: yes.  %s" % changed)
+    t = transaction.get()
+    t.note("Upgraded %s on %s" % (productid, siteid))
+    t.commit()
+    print("Product %s successfully upgraded on %s." % (productid, siteid))
+else:
+    print("Product %s upgraded in simulation mode on %s."% (productid, siteid))

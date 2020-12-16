@@ -1,4 +1,4 @@
-#ila -*- coding: utf-8 -*-
+# ila -*- coding: utf-8 -*-
 
 import unittest
 import plone.api
@@ -26,18 +26,17 @@ class TestSetup(unittest.TestCase):
 
     def test_Products_installed(self):
         return  # neutered since we do not check that ploneformgen is installed
-        portal = self.layer['portal']
-        qi = getattr(portal, 'portal_quickinstaller')
+        portal = self.layer["portal"]
+        qi = getattr(portal, "portal_quickinstaller")
         for p in [
             # Keep me in sync with installOldStyleProducts
             "Products.PloneFormGen",
         ]:
-            self.assertTrue(qi.isProductInstalled(p),
-                            "%s is not installed"%p)
+            self.assertTrue(qi.isProductInstalled(p), "%s is not installed" % p)
 
     def test_cookies(self):
-        portal = self.layer['portal']
-        l = portal['acl_users']['session']
+        portal = self.layer["portal"]
+        l = portal["acl_users"]["session"]
         self.assertEqual(l.timeout, 604800)
         self.assertEqual(l.cookie_lifetime, 7)
         self.assertEqual(l.secure, True)

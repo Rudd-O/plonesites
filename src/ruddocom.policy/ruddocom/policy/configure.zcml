@@ -27,7 +27,7 @@
       title="Rerun setupAll"
       description="Apply idempotent configuration imports"
       source="*"
-      destination="15"
+      destination="17"
       handler=".setupHandlers.setupAll"
       sortkey="1"
       profile="ruddocom.policy:default"
