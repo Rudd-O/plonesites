@@ -35,6 +35,16 @@
       post_handler=".setuphandlers.uninstall"
       />
 
+  <genericsetup:upgradeStep
+      title="Install TinyMCE styles"
+      description="Autosize images style installation."
+      source="1000"
+      destination="1001"
+      handler=".setuphandlers.redo_registry"
+      sortkey="1"
+      profile="ruddocom.theme:default"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="ruddocom.theme-hiddenprofiles" />

@@ -24,4 +24,51 @@
 	      <element>template|+plone+static/components/tinymce-builded/js/tinymce/plugins/template</element>
 	    </value>
 	</record>
+
+	<record name="plone.alignment_styles" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" field="alignment_styles">
+	    <field type="plone.registry.field.List">
+	      <default/>
+	      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Name|format|icon</description>
+	      <required>False</required>
+	      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Alignment styles</title>
+	      <value_type type="plone.registry.field.TextLine"/>
+	    </field>
+	    <value>
+        default=[
+            u"",
+            u"",
+            u"",
+            u""])
+	      <element>Left|alignleft|alignleft</element>
+	      <element>Center|aligncenter|aligncenter</element>
+	      <element>Right|alignright|alignright</element>
+	      <element>Justify|alignjustify|alignjustify</element>
+	      <element>Scale image width|scaleimage|alignjustify</element>
+	    </value>
+	</record>
+
+	<record name="plone.formats" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" field="formats">
+	    <field type="plone.registry.field.Text">
+	      <default/>
+	      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Enter a JSON-formatted style format configuration. A format is for example the style that get applied when you press the bold button inside the editor. See https://www.tinymce.com/docs/configure/content-formatting/#formats</description>
+	      <required>True</required>
+	      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Formats</title>
+	      <value_type type="plone.registry.field.TextLine"/>
+	    </field>
+	    <value>{
+    "clearfix": {
+        "classes": "clearfix", 
+        "block": "div"
+    }, 
+    "scaleimage": {
+        "classes": "scaleimage",
+        "inline": "img",
+        "block": "img"
+    },
+    "discreet": {
+        "classes": "discreet",
+        "inline": "span"
+    }
+}</value>
+	</record>
 </registry>
