@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>17</version>
+  <version>20</version>
   <dependencies>
     <!-- Keep me in sync with configure.xml includes, tests.py and installOldStyleProducts() -->
     <dependency>profile-plone.app.registry:default</dependency>
