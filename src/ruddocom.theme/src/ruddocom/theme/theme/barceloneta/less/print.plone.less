@@ -18,11 +18,13 @@
   }
 
   a[href]:after {
-    content: " (" attr(href) ")";
+    content: " [" attr(href) "]";
+    color: #666 !important;
   }
 
   abbr[title]:after {
-    content: " (" attr(title) ")";
+    content: " [" attr(title) "]";
+    color: #666 !important;
   }
 
   // Don't show links for images, or javascript/internal links
@@ -107,6 +109,11 @@
   }
 
   #portal-breadcrumbs {
+    display: None;
+  }
+
+  /* Remove elements useless on printouts. */
+  #edit-zone, #mainnavigation-wrapper, #abovecontent-wrapper, #content-header, #viewlet-above-content-title, #viewlet-below-content, .documentByLine, #viewlet-below-content-title, #portal-footer-wrapper {
     display: None;
   }
 }
