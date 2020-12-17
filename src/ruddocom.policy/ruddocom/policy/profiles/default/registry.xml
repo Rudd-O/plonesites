@@ -412,8 +412,8 @@
       <value_type type="plone.registry.field.URI"/>
     </field>
     <value>
-      <element>http://localhost:80/rudd-o.com</element>
-      <element>http://localhost:80/es.rudd-o.com</element>
+      <element>http://localhost:80/purge/rudd-o.com</element>
+      <element>http://localhost:80/purge/es.rudd-o.com</element>
     </value>
   </record>
   <record name="plone.caching.interfaces.ICacheSettings.enabled" interface="plone.caching.interfaces.ICacheSettings" field="enabled">
