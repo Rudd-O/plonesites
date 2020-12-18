@@ -3,7 +3,7 @@
 #portal-header {
     margin: 0 auto 15px;
     padding-top:15px;
-    margin-bottom: 15px;
+    margin-bottom: 19px;
     #portal-logo {
         float: left;
         margin-top: 1px;
@@ -22,6 +22,8 @@
 
 	#portal-anontools {
 		float: right;
+		/* Keep the anontools box from screwing up the layout of the searchbox on mobile. */
+		max-height: 40px;
 		ul {
 			padding-right: 0px;
 		}
@@ -34,7 +36,7 @@
 		position: absolute;
 		z-index: 2;
 		margin-left:3px;
-		margin-top: 43px;
+		margin-top: 47px;
 		white-space: nowrap;
 
         .searchSection {display: none;} //non on mobile
