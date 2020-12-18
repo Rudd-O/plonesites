@@ -10,20 +10,6 @@
     </field>
     <value>Rudd-O.com</value>
   </record>
-  <record name="plone.email_from_address" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_address">
-    <field type="plone.registry.field.ASCIILine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this address as the e-mail return address. It is also used as the destination address for the site-wide contact form and the 'Send test e-mail' feature.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' address</title>
-    </field>
-    <value>webmaster@rudd-o.com</value>
-  </record>
-  <record name="plone.email_from_name" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_name">
-    <field type="plone.registry.field.TextLine">
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this name as the e-mail sender.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' name</title>
-    </field>
-    <value>Webmaster at Rudd-O.com</value>
-  </record>
   <record name="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings.show_syndication_button" interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" field="show_syndication_button">
     <field type="plone.registry.field.Bool">
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Makes it possible to customize syndication settings for particular folders and collections </description>
@@ -337,7 +323,7 @@
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="help_smtp_server">The address of your local SMTP (outgoing e-mail) server. Usually 'localhost', unless you use an external server to send e-mail.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="label_smtp_server">SMTP server</title>
     </field>
-    <value>10.252.104.130</value>
+    <value>mail.rudd-o.com</value>
   </record>
   <record name="plone.smtp_port" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="smtp_port">
     <field type="plone.registry.field.Int">
@@ -355,6 +341,22 @@
     </field>
     <value>lucy</value>
   </record>
+<!--
+  Since this is a shared policy package for the moment, we must not overwrite this in both sites.
+  <record name="plone.email_from_address" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_address">
+    <field type="plone.registry.field.ASCIILine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this address as the e-mail return address. It is also used as the destination address for the site-wide contact form and the 'Send test e-mail' feature.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' address</title>
+    </field>
+    <value>webmaster@rudd-o.com</value>
+  </record>
+  <record name="plone.email_from_name" interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" field="email_from_name">
+    <field type="plone.registry.field.TextLine">
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Plone generates e-mail using this name as the e-mail sender.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Site 'From' name</title>
+    </field>
+    <value>Webmaster at Rudd-O.com</value>
+  </record> -->
   <record name="plone.app.caching.interfaces.IPloneCacheSettings.purgedContentTypes" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="purgedContentTypes">
     <field type="plone.registry.field.Tuple">
       <default>
