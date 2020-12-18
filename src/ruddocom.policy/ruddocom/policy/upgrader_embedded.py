@@ -43,6 +43,5 @@ for productid in productstoupgrade:
 if commit:
     t = transaction.get()
     t.commit()
-    print()
 for change in changes:
-    print(change + " (Simulated.)" if not commit else "")
+    print(change + (" (Simulated.)" if not commit else ""))
