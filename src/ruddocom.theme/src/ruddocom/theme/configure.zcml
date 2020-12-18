@@ -45,6 +45,16 @@
       profile="ruddocom.theme:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Update TinyMCE styles"
+      description="Autosize images and video style installation."
+      source="1001"
+      destination="1002"
+      handler=".setuphandlers.redo_registry"
+      sortkey="1"
+      profile="ruddocom.theme:default"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="ruddocom.theme-hiddenprofiles" />

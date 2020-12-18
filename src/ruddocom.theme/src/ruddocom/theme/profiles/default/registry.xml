@@ -25,6 +25,25 @@
 	    </value>
 	</record>
 
+	<record name="plone.inline_styles" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" field="inline_styles">
+	    <field type="plone.registry.field.List">
+	      <default/>
+	      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Name|format|icon</description>
+	      <required>False</required>
+	      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone" ns0:translate="">Alignment styles</title>
+	      <value_type type="plone.registry.field.TextLine"/>
+	    </field>
+	    <value>
+	      <element>Bold|bold|bold</element>
+	      <element>Italic|italic|italic</element>
+	      <element>Strikethrough|strikethrough|strikethrough</element>
+	      <element>Superscript|superscript|superscript</element>
+	      <element>Subscript|subscript|subscript</element>
+	      <element>Code|code|code</element>
+	      <element>Quote|quote|quote</element>
+	    </value>
+	</record>
+
 	<record name="plone.alignment_styles" interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" field="alignment_styles">
 	    <field type="plone.registry.field.List">
 	      <default/>
@@ -34,16 +53,12 @@
 	      <value_type type="plone.registry.field.TextLine"/>
 	    </field>
 	    <value>
-        default=[
-            u"",
-            u"",
-            u"",
-            u""])
 	      <element>Left|alignleft|alignleft</element>
 	      <element>Center|aligncenter|aligncenter</element>
 	      <element>Right|alignright|alignright</element>
 	      <element>Justify|alignjustify|alignjustify</element>
-	      <element>Scale image width|scaleimage|alignjustify</element>
+	      <element>Full-width image|autoscaleimg|alignjustify</element>
+	      <element>Full-width video|autoscalevid|alignjustify</element>
 	    </value>
 	</record>
 
@@ -60,10 +75,18 @@
         "classes": "clearfix", 
         "block": "div"
     }, 
-    "scaleimage": {
-        "classes": "scaleimage",
+    "autoscaleimg": {
+        "classes": "autoscale",
         "inline": "img",
         "block": "img"
+    },
+    "autoscalevid": {
+        "classes": "autoscale",
+        "inline": "video",
+        "block": "video"
+    },
+    "quote": {
+        "inline": "q"
     },
     "discreet": {
         "classes": "discreet",
