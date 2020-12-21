@@ -1,5 +1,7 @@
-from setuptools import setup, find_packages
 import os
+
+from setuptools import setup, find_packages
+
 
 version = '0.1'
 
@@ -27,6 +29,7 @@ setup(name='ruddocom.policy',
       install_requires=[
           'setuptools',
           'Plone',
+          'plone.app.relationfield',
       ],
       # -*- Extra requirements: -*-
       extras_require={

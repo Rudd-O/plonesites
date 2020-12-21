@@ -13,6 +13,7 @@
   <include package="plone.app.dexterity" />
   <include package="plone.app.theming" />
   <include package="plone.session" />
+  <include package="plone.app.relationfield" />
 
   <genericsetup:importStep
       name="ruddocom.policy:default"
@@ -27,7 +28,7 @@
       title="Rerun setupAll"
       description="Apply idempotent configuration imports"
       source="*"
-      destination="21"
+      destination="22"
       handler=".setupHandlers.setupAll"
       sortkey="1"
       profile="ruddocom.policy:default"

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>21</version>
+  <version>22</version>
   <dependencies>
     <!-- Keep me in sync with configure.xml includes, tests.py and installOldStyleProducts() -->
     <dependency>profile-plone.app.registry:default</dependency>
@@ -9,5 +9,6 @@
     <dependency>profile-plone.app.dexterity:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-plone.session:default</dependency>
+    <dependency>profile-plone.app.relationfield:default</dependency>
   </dependencies>
 </metadata>
