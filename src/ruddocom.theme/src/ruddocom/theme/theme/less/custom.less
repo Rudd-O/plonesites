@@ -76,6 +76,7 @@ figure figcaption {
   text-transform: capitalize;
 }
 
+/* Article asides. */
 #tinymce aside, main aside {
   display: block;
   margin-left: 1em;
@@ -87,4 +88,9 @@ figure figcaption {
   margin-top: 10px;
   margin-bottom: 10px;
   color: #767676;
+}
+
+/* Avoid pictures stacking up in listings. */
+.template-listing_view .entries .entry {
+  clear: right;
 }
