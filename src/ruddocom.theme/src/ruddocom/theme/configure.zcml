@@ -65,6 +65,16 @@
       profile="ruddocom.theme:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Update TinyMCE styles again"
+      description="Figure and caption and templates."
+      source="1003"
+      destination="1004"
+      handler=".setuphandlers.purge_theme_css"
+      sortkey="1"
+      profile="ruddocom.theme:default"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="ruddocom.theme-hiddenprofiles" />

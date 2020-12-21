@@ -67,6 +67,20 @@ def purge_urls(unused_portal_setup, urls):
     logger("Done purging URLs.")
 
 
+def purge_theme_css(portal_setup):
+    try:
+        if portal_setup.readDataFile("ruddocom.theme.txt") is None:
+            return
+    except AttributeError:
+        logger("Called with %s, continuing since it appears we do not need a marker file.", portal_setup)
+    purge_urls(
+        portal_setup,
+        [
+            "//++theme++ruddocom/less/theme-compiled.css",
+        ],
+    )
+
+
 def redo_registry_and_purge_certain_urls(portal_setup):
     try:
         if portal_setup.readDataFile("ruddocom.theme.txt") is None:
